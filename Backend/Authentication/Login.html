@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="./Login.css">
+
+</head>
+<body>
+    <div id="Login-container">
+
+        <!-- Login Form -->
+        <form action="" id="loginForm" onsubmit="handleLogin(event)">
+            <h2 id="headlogin">Login Here</h2>
+
+            <div class="form-group">
+                <!-- username -->
+                <div class="form-data">
+                    <input type="text" id="userName" name="userName" placeholder="Enter Your Username" required>
+                </div>
+                <!-- password -->
+                <div class="form-data">
+                    <input type="password" id="password" placeholder="Enter Your Password" required>
+                </div>
+            </div>
+
+            <div id="loginSubmit">
+                <button type="submit">Login</button>
+            </div>
+        </form>
+
+        <!-- Signup Button  -->
+        <div id="signupbutton">
+            <label for="">
+                Don't have an account? <button class="toggle-btn" onclick="toggleForms()">Signup</button>
+            </label>
+        </div>
+    </div>
+
+    <script src="Login.js"></script>
+</body>
+
+</html>
