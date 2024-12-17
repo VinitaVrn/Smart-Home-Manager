@@ -26,3 +26,6 @@ async function registerUser(userData){
             alert('Something went wrong. Please try again.')
     }
 }
+function toggleForms() {
+    window.location.href = 'Login.html';
+}

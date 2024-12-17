@@ -83,9 +83,9 @@ body {
     padding: 20px;
     border-radius: 25px;
     width: 450px;
-    text-align: center;
+    /* text-align: center; */
     background-color: rgba(0, 0, 0, 0.7);
-    height: 450px ;
+    height: 500px ;
  
 }
 
@@ -94,6 +94,7 @@ body {
     font-size: 24px;
     margin-bottom: 20px;
     padding: 14px;
+    text-align: center;
 }
 
 .form-data {
@@ -143,4 +144,18 @@ input:hover,
     outline: none;
     border-color: rgb(104, 230, 104);
     color: white;
+}
+#loginButton {
+    padding-top: 21px;
+    padding-left: 20px ;
+}
+
+#loginButton button {
+    background-color: transparent;
+    color: #d6e7d7;
+    border: none;
+}
+#loginButton button:hover {
+    border-color: rgb(104, 230, 104);
+
 }
