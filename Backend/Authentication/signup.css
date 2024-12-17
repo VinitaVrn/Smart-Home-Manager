@@ -156,6 +156,6 @@ input:hover,
     border: none;
 }
 #loginButton button:hover {
-    border-color: rgb(104, 230, 104);
+    color: rgb(104, 230, 104);
 
 }
