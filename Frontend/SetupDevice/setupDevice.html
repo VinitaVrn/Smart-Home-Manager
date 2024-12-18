@@ -31,12 +31,12 @@
           <div id="setRooms">
             <!-- form -->
             <form id="roomForm">
-              <h1 id="roomsName">ROOms Networks</h1>
+              <div id="roomsName"><h1 >ROOms Networks</h1></div>
               <div id="forminput">
                 <div class="rooms">
                   <!-- part your house -->
                   <label for="homePart">Select Part of Home:</label>
-                  <select name="homePart" id="homePart">
+                  <select name="homePart" id="homePart" required>
                     <option value="">Select The Part</option>
                     <option value="LivingRoom">Living Room</option>
                     <option value="BedRoom">Bed Room</option>
@@ -47,7 +47,7 @@
 
                 <!-- Custom Room Name Input -->
                 <div class="rooms" id="customRoomDiv" style="display: none">
-                  <input type="text" id="customRoom" name="customRoom" placeholder="Enter room name"/>
+                  <input type="text" id="customRoom" name="customRoom" placeholder="Enter room name" required/>
                 </div>
 
                 <div class="rooms">
