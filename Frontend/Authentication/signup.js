@@ -17,7 +17,7 @@ async function registerUser(userData){
     try {
         const response = await axios.post("Api link" , userData)    //   Api link need
         if (response.data.success) {
-            window.location.href = 'not have link';               //   Api link need
+            window.location.href = 'SetupDevice\setupDevice.html';              
         } else {
             alert('Invalid username or password. Please try again.');
         }
