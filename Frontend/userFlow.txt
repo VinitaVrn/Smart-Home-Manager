@@ -1,0 +1,67 @@
+**1. User Authentication and Household Setup**
+
+* 1.1 Registration
+    * Step 1: User visits the registration page. 
+    * Inputs name, email, password.
+    * Submits the form.
+    * Backend: Save user details in the database. Send confirmation (e.g., "Account successfully created").
+    * Next Step: Redirect to login.
+* 1.2 Login
+    * Step 1: User inputs email and password.
+    * On success: Redirect to the dashboard.
+    * On failure: Show an error (e.g., "Incorrect email or password").
+    * Backend: Generate a session token (or JWT) for authentication.
+* 1.3 Household Setup
+    * Step 1: User is prompted to set up their household:
+        * Create rooms (e.g., Bedroom, Living Room) via a form.
+        * Add device types to each room (e.g., Lamp, Fan, Thermostat).
+    * Example: 
+        * User selects "Add Room" → Inputs "Bedroom."
+        * User selects "Add Device" → Chooses "Lamp" and "Fan."
+    * Backend: Save household structure (user -> rooms -> devices) in the database.
+
+**2. Appliance Control Dashboard**
+
+* 2.1 Dashboard Overview
+    * Step 1: User lands on a dashboard showing all rooms and devices.
+    * Example Layout: 
+        * Bedroom: Lamp (On), Fan (Off).
+        * Living Room: TV (Off), Thermostat (22°C).
+    * Step 2: User clicks a device to control it:
+        * Lamp: Toggle on/off or adjust brightness.
+        * Thermostat: Change temperature.
+        * Fan: Adjust speed.
+    * Backend: Send updates to the simulated device state and persist the changes.
+* 2.2 Device States
+    * Real-time updates to reflect device status changes.
+
+**3. Routine Scheduling System**
+
+* 3.1 Adding a Routine
+    * Step 1: User navigates to the "Routines" tab and clicks "Create Routine."
+    * Step 2: User defines the routine:
+        * Select devices: (e.g., All Lights).
+        * Specify actions: (e.g., Turn Off).
+        * Set time: (e.g., 10:00 PM daily).
+    * Backend: Save routine details in the database.
+* 3.2 Routine Execution
+    * Step 1: At the scheduled time, the system executes the routine.
+    * Step 2: Update the dashboard to reflect the new device states.
+    * Optional: Send a notification to the user ("All lights have been turned off.").
+
+**4. Simulated Energy Usage Tracking**
+
+* 4.1 View Energy Usage
+    * Step 1: User navigates to the "Energy Usage" tab.
+    * Step 2: User sees:
+        * Total energy consumed by all devices.
+        * Breakdown by room or device (e.g., AC = 30 kWh, Lamp = 5 kWh).
+        * Visual reports (charts/graphs).
+    * Backend: Use device uptime and power consumption rates to calculate dummy usage.
+
+**5. Alerts for Device Malfunctions**
+
+* 5.1 Real-Time Alerts
+    * Step 1: User sees alerts in the notification panel (e.g., “Living Room Heater has been on for 24 hours!”).
+    * Step 2: User clicks the alert to view details and suggested actions (e.g., Turn Off, Reset).
+    * Backend: Continuously monitor device states for anomalies (uptime, temperature limits, etc.).
