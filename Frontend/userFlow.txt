@@ -2,7 +2,7 @@
 
 * 1.1 Registration
     * Step 1: User visits the registration page. 
-    * Inputs name, email, password, and optionally, a profile picture. 
+    * Inputs name, email, password.
     * Submits the form.
     * Backend: Save user details in the database. Send confirmation (e.g., "Account successfully created").
     * Next Step: Redirect to login.
@@ -33,7 +33,7 @@
         * Fan: Adjust speed.
     * Backend: Send updates to the simulated device state and persist the changes.
 * 2.2 Device States
-    * Real-time updates (via polling or websockets) to reflect device status changes.
+    * Real-time updates to reflect device status changes.
 
 **3. Routine Scheduling System**
 
@@ -57,7 +57,7 @@
         * Total energy consumed by all devices.
         * Breakdown by room or device (e.g., AC = 30 kWh, Lamp = 5 kWh).
         * Visual reports (charts/graphs).
-    * Backend: Use device uptime and power consumption rates to calculate usage.
+    * Backend: Use device uptime and power consumption rates to calculate dummy usage.
 
 **5. Alerts for Device Malfunctions**
 
