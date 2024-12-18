@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Smart Home Management Wireframe</title>
     <style>
         body {
@@ -103,7 +102,7 @@
             <a href="#alerts">Alerts</a>
         </nav>
 
-        <!--Dashboard-->
+        <!-- Dashboard Section -->
         <div id="dashboard">
             <h2 class="section-title">Dashboard</h2>
             <div class="room">
@@ -111,13 +110,13 @@
                 <div class="devices">
                     <div class="device">
                         <h3>TV</h3>
-                        <p>Status: Off</p>
-                        <button>Turn On</button>
+                        <p id="tv-status">Status: Off</p>
+                        <button onclick="toggleDevice('tv-status')">Turn On</button>
                     </div>
                     <div class="device">
                         <h3>Thermostat</h3>
-                        <p>Temperature: 22°C</p>
-                        <button>Adjust</button>
+                        <p id="thermostat-status">Temperature: 22°C</p>
+                        <button onclick="adjustThermostat('thermostat-status')">Adjust</button>
                     </div>
                 </div>
             </div>
@@ -127,19 +126,19 @@
                 <div class="devices">
                     <div class="device">
                         <h3>Lamp</h3>
-                        <p>Status: On</p>
-                        <button>Turn Off</button>
+                        <p id="lamp-status">Status: On</p>
+                        <button onclick="toggleDevice('lamp-status')">Turn Off</button>
                     </div>
                     <div class="device">
                         <h3>Fan</h3>
-                        <p>Status: Off</p>
-                        <button>Turn On</button>
+                        <p id="fan-status">Status: Off</p>
+                        <button onclick="toggleDevice('fan-status')">Turn On</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!--Routines-->
+        <!-- Routines Section -->
         <div id="routines">
             <h2 class="section-title">Routines</h2>
             <div class="routine">
@@ -147,20 +146,20 @@
                 <button>Edit</button>
                 <button>Delete</button>
             </div>
-            <button>Add New Routine</button>
+            <button onclick="addRoutine()">Add New Routine</button>
         </div>
 
-        <!--Energy Usage-->
+        <!-- Energy Usage Section -->
         <div id="energy">
             <h2 class="section-title">Energy Usage</h2>
             <div class="energy">
-                <p>Total Energy Used: 35 kWh</p>
-                <p>Living Room: 20 kWh</p>
-                <p>Bedroom: 15 kWh</p>
+                <p>Total Energy Used: <span id="total-energy">35</span> kWh</p>
+                <p>Living Room: <span id="living-room-energy">20</span> kWh</p>
+                <p>Bedroom: <span id="bedroom-energy">15</span> kWh</p>
             </div>
         </div>
 
-        <!--Alerts-->
+        <!-- Alerts Section -->
         <div id="alerts">
             <h2 class="section-title">Alerts</h2>
             <div class="alert">
@@ -169,5 +168,27 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function toggleDevice(deviceId) {
+            const device = document.getElementById(deviceId);
+            if (device.textContent.includes('Off')) {
+                device.textContent = device.textContent.replace('Off', 'On');
+            } else {
+                device.textContent = device.textContent.replace('On', 'Off');
+            }
+        }
+
+        function adjustThermostat(thermostatId) {
+            const temperature = prompt('Enter new temperature:');
+            if (temperature) {
+                document.getElementById(thermostatId).textContent = `Temperature: ${temperature}°C`;
+            }
+        }
+
+        function addRoutine() {
+            alert('Feature to add a new routine coming soon!');
+        }
+    </script>
 </body>
 </html>
