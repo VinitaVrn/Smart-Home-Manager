@@ -1,6 +1,10 @@
 import {model,Schema} from "mongoose";
 
 const userschema=new Schema({
+    name:{
+     type:String,
+     required:true
+    },
     username:{
         type:String,
         required:true,
@@ -25,4 +29,33 @@ const userschema=new Schema({
 
 const user= model("user",userschema)
 
-export {user}
+const deviceschema= new Schema({
+    devicename:{
+        type:String,
+        required:true
+    },
+    state:{
+      type:Boolean,
+      default:false
+    },
+},
+{timestamps: true })
+
+const roomdevice= new Schema({
+  username:{
+    type:String,
+    required:true
+  },
+  roomname:{
+    type:String,
+    required:true
+  },
+  device:{
+    type: [deviceschema],
+    default:[]
+}
+})
+
+const roomNdevice= model("roomdevice",roomdevice)
+
+export {user,roomNdevice}
