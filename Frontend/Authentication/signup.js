@@ -19,11 +19,11 @@ async function registerUser(userData){
         const response = await axios.post("http://localhost:4000/user/signup" , userData) 
         //    //   Api link need
         console.log(response.data)
-        if (response.data.success) {
+        // (response.data.success) {
             window.location.href = 'SetupDevice\setupDevice.html';              
-        } else {
-            alert('Invalid username or password. Please try again.');
-        }
+        // } else {
+        //     alert('Invalid username or password. Please try again.');
+        // }
     }catch(error){
         console.log('Error during API call:', error);
             alert('Something went wrong. Please try again.')
