@@ -20,7 +20,9 @@ const register=async (req, res)=>{
             password:hashedpassword,
         }  
       await user.create(newuser)
-      res.status(201).json({msg:"Account created successfully"})
+      res.status(201).json({msg:"Account created successfully",
+        user:newuser
+      })
     }catch(err){
       res.status(500).json({msg:"Internal server error",
         error:err.message
@@ -59,12 +61,7 @@ const login=async(req,res)=>{
         })
     }
 }
- 
-const createroomNdevice= async (req,res)=>{
-    const {username,roomname,...arr}=req.body;
-    if(!username||!roomname){
-       
-    }
-}
+const deleteuseraccount=async (req,res)=>{
 
+} 
 export{register,login}
