@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Home Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #1c1e1f;
+            margin: 0;
+            padding: 0;
+            color: #f0f0f0;
+        }
+
+        header {
+            background: linear-gradient(90deg, #d31f26, #ff6f61);
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+            font-size: 2rem;
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .navbar {
+            background-color: #</div>181a1b;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #d31f26;
+            font-weight: 600;
+            margin: 0 15px;
+            text-transform: uppercase;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .navbar a:hover {
+            color: #ff6f61;
+            border-bottom: 2px solid #ff6f61;
+        }
+
+        .hero {
+            background: url('https://cdn.pixabay.com/photo/2019/03/22/07/31/smart-home-4072061_1280.jpg') no-repeat center center / cover;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container {
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #ff6f61;
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            position: relative;
+            background: #181a1b;
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            color: #fff;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-custom {
+            background: #d31f26;
+            color: #fff;
+            border-radius: 20px;
+            padding: 10px 20px;
+            border: none;
+            font-weight: 600;
+            font-family: 'Open Sans', sans-serif;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .btn-custom:hover {
+            background: #ff6f61;
+            transform: scale(1.1);
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 30px;
+            font-size: 0.9rem;
+            font-family: 'Open Sans', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar d-flex justify-content-center py-3">
+        <div class="logo">
+            <img src="https://raw.githubusercontent.com/VinitaVrn/Smart-Home-Manager/refs/heads/main/Frontend/SetupDevice/transparent_vsmart.png?token=GHSAT0AAAAAACYW4HWSAEHUBLE6JTZQDXT4Z3D6QYA" width="100" alt="Smart Home Logo">
+        </div>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#routines">Routines</a>
+        <a href="#energy">Energy Usage</a>
+        <a href="#alerts">Alerts</a>
+    </nav>
+
+    <div class="hero">
+        <h1>Welcome to Your Smart Home</h1>
+    </div>
+    
+    <div class="container">
+        <!-- Dashboard Section -->
+        <section id="dashboard">
+            <h2 class="section-title">Dashboard</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">TV</h5>
+                        <p id="tv-status">Status: Off</p>
+                        <div class="form-check form-switch d-flex justify-content-center">
+                            <input class="form-check-input" type="checkbox" id="tv-status-switch" onchange="toggleDevice('tv-status', this)">
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Thermostat</h5>
+                        <p id="thermostat-status">Temperature: 22°C</p>
+                        <button class="btn btn-custom" onclick="adjustThermostat('thermostat-status')">Adjust</button>
+                    </div>
+                </div>                
+            </div>
+        </section>
+
+        <!-- Routines Section -->
+        <section id="routines">
+            <h2 class="section-title">Routines</h2>
+            <div class="card">
+                <div class="card-body">
+                    <p>Turn off all devices at 11 PM</p>
+                    <button class="btn btn-custom">Edit</button>
+                    <button class="btn btn-custom">Delete</button>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <button class="btn btn-custom mt-3" onclick="addRoutine()">Add Routine</button>
+            </div>
+        </section>
+        <br>
+
+        <!-- Energy Usage Section -->
+        <section id="energy">
+            <h2 class="section-title">Energy Usage</h2>
+            <div class="card">
+                <div class="card-body">
+                    <p>Total Energy Used: <span id="total-energy">35</span> kWh</p>
+                    <p>Living Room: <span id="living-room-energy">20</span> kWh</p>
+                    <p>Bedroom: <span id="bedroom-energy">15</span> kWh</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Alerts Section -->
+        <section id="alerts">
+            <h2 class="section-title">Alerts</h2>
+            <div class="card"></div>
+                <div class="card-body">
+                    <p>Warning: Living Room Heater has been on for 36 hours!</p>
+                    <button class="btn btn-custom">View Details</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        © powered by CodeSmiths
+    </footer>
+
+    <script>
+        function toggleDevice(deviceId, switchElement) {
+            const device = document.getElementById(deviceId);
+            if (switchElement.checked) {
+                device.textContent = 'Status: On';
+            } else {
+                device.textContent = 'Status: Off';
+            }
+        }
+
+        function adjustThermostat(thermostatId) {
+            const temperature = prompt('Enter new temperature (10°C to 30°C):');
+            const tempNumber = parseFloat(temperature);
+            if (!isNaN(tempNumber) && tempNumber >= 10 && tempNumber <= 30) {
+                document.getElementById(thermostatId).textContent = `Temperature: ${tempNumber}°C`;
+            } else {
+                alert('Please enter a valid temperature between 10°C and 30°C.');
+            }
+        }
+
+        function addRoutine() {
+            alert('Feature to add a new routine coming soon!');
+        }
+    </script>
+</body>
+</html>

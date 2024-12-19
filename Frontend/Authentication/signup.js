@@ -11,10 +11,9 @@ document.addEventListener("DOMContentLoaded" , function(){
         const userData = { Name: name, Email: email,Username: username,Password: password}
         registerUser(userData)
     })
-}) 
+})
 
 async function registerUser(userData){
-    console.log(userData)
     try {
         const response = await axios.post("http://localhost:4000/user/signup" , userData) 
         //    //   Api link need
@@ -24,8 +23,10 @@ async function registerUser(userData){
         // } else {
         //     alert('Invalid username or password. Please try again.');
         // }
+        const response = await axios.post("Api link" , userData)    //   Api link need
+            window.location.href = '../SetupDevice/setupDevice.html';              
     }catch(error){
-        console.log('Error during API call:', error);
+        console.error('Error during API call:', error);
             alert('Something went wrong. Please try again.')
     }
 }
