@@ -26,7 +26,7 @@
         }
 
         .navbar {
-            background-color: #181a1b;
+            background-color: #</div>181a1b;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
@@ -165,7 +165,7 @@
                         <h5 class="card-title">TV</h5>
                         <p id="tv-status">Status: Off</p>
                         <div class="form-check form-switch d-flex justify-content-center">
-                            <input title="checkbox" class="form-check-input" type="checkbox" id="tv-status-switch" onchange="toggleDevice('tv-status', this)">
+                            <input class="form-check-input" type="checkbox" id="tv-status-switch" onchange="toggleDevice('tv-status', this)">
                         </div>
                     </div>
                 </div>
@@ -185,12 +185,10 @@
             <div class="card">
                 <div class="card-body">
                     <p>Turn off all devices at 11 PM</p>
-                    <button class="btn btn-custom">Edit</button>
-                    <button class="btn btn-custom">Delete</button>
                 </div>
             </div>
             <div style="text-align: center;">
-                <button class="btn btn-custom mt-3" onclick="addRoutine()">Add Routine</button>
+                <button class="btn btn-custom mt-3" type="button" onclick="location.href='addRoutine.html'">Manage Routines</button>
             </div>
         </section>
         <br>
@@ -213,7 +211,7 @@
             <div class="card"></div>
                 <div class="card-body">
                     <p>Warning: Living Room Heater has been on for 36 hours!</p>
-                    <button class="btn btn-custom">View Details</button>
+                    <button class="btn btn-custom">Refresh</button>
                 </div>
             </div>
         </section>
@@ -232,14 +230,15 @@
                 device.textContent = 'Status: Off';
             }
         }
-
+    
         function updateThermostat(thermostatId, value) {
             document.getElementById(thermostatId).textContent = `Temperature: ${value}°C`;
         }
-
+    
         function addRoutine() {
             alert('Feature to add a new routine coming soon!');
         }
+        
     </script>
 </body>
 </html>
