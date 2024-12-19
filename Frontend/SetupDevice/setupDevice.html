@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Setup ROOm</title>
+    <link rel="stylesheet" href="./setupDevice.css" />
+  </head>
+  <body>
+    <header>
+      <div id="header">
+        <div id="img">
+          <img src="./bgblack.png" alt="V-Smartz" />
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div id="container">
+        <div class="headline">
+          <h1 id="title">Welcome Smarty</h1>
+        </div>
+
+        <!-- Devices and Rooms -->
+        <div id="Devices">
+          <div id="RoomsButton">
+            <div id="createtitle"><p>Your Smart ROOms :</p></div>
+            <div id="createRoom"></div>
+          </div>
+          <div class="empty"></div>
+          <div id="setRooms">
+            <!-- form -->
+            <form id="roomForm">
+              <div id="roomsName"><h1 >ROOms Networks</h1></div>
+              <div id="forminput">
+                <div class="rooms">
+                  <!-- part your house -->
+                  <label for="homePart">Select Part of Home:</label>
+                  <select name="homePart" id="homePart" required>
+                    <option value="">Select The Part</option>
+                    <option value="LivingRoom">Living Room</option>
+                    <option value="BedRoom">Bed Room</option>
+                    <option value="Kitchen">Kitchen</option>
+                    <option value="custom">Custom</option>
+                  </select>
+                </div>
+
+                <!-- Custom Room Name Input -->
+                <div class="rooms" id="customRoomDiv" style="display: none">
+                  <input type="text" id="customRoom" name="customRoom" placeholder="Enter room name" required/>
+                </div>
+
+                <div class="rooms">
+                  <div id="deviceType">
+                    <div class="sampleDevices"><p>Link Your Devices :</p></div>
+
+                    <div id="types">
+                      <div class="devicewifi">
+                        <label for="wifi">Lamps :</label>
+                        <select name="wifi" id="device1" class="wifi">
+                          <option value="">List of Wi-Fi</option>
+                          <!-- Wi-Fi options will go here -->
+                        </select>
+                      </div>
+                      <div class="devicewifi">
+                        <label for="wifi">TV :</label>
+                        <select name="wifi" id="device2" class="wifi">
+                          <option value="">List of Wi-Fi</option>
+                          <!-- Wi-Fi options will go here -->
+                        </select>
+                      </div>
+                      <div class="devicewifi">
+                        <label for="wifi">Fan :</label>
+                        <select name="wifi" id="device3" class="wifi">
+                          <option value="">List of Wi-Fi</option>
+                          <!-- Wi-Fi options will go here -->
+                        </select>
+                      </div>
+                      <div class="devicewifi">
+                        <label for="wifi">Light :</label>
+                        <select name="wifi" id="device4" class="wifi">
+                          <option value="">List of Wi-Fi</option>
+                          <!-- Wi-Fi options will go here -->
+                        </select>
+                      </div>
+                      <div class="devicewifi">
+                        <label for="wifi">RGBLight :</label>
+                        <select name="wifi" id="device5" class="wifi">
+                          <option value="">List of Wi-Fi</option>
+                          <!-- Wi-Fi options will go here -->
+                        </select>
+                      </div>
+                      <div class="devicewifi">
+                        <label for="wifi">SwitchBoard :</label>
+                        <select name="wifi" id="device6" class="wifi">
+                          <option value="">List of Wi-Fi</option>
+                          <!-- Wi-Fi options will go here -->
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="buttonsub" class="rooms">
+                  <button type="submit" id="submitbutton">Add Room</button>
+                  <button  id="dashboardPage" onclick="Dashboard()">Skip/Next</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="./setupDevice.js"></script>

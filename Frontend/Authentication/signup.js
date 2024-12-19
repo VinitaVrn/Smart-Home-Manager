@@ -20,7 +20,7 @@ async function registerUser(userData){
         //    //   Api link need
         console.log(response.data)
         if (response.data.success) {
-            window.location.href = 'not have link';               //   Api link need
+            window.location.href = 'SetupDevice\setupDevice.html';              
         } else {
             alert('Invalid username or password. Please try again.');
         }
