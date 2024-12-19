@@ -157,6 +157,31 @@
     </footer>
 
     <script>
+        async function loadRoutines() {
+        try {
+            const response = await fetch('https://your-backend-api.com/routines'); // Replace with your API URL
+            const routines = await response.json();
+            const routineList = document.getElementById('routines-list');
+            routineList.innerHTML = '';
+            routines.forEach(routine => {
+                const newCard = document.createElement('div');
+                newCard.classList.add('card');
+                newCard.innerHTML = `
+                    <div class="card-body">
+                        <p>${routine.type} at ${routine.time}</p>
+                        <div>
+                            <button class="btn btn-custom" onclick="editRoutine(${routine.id})">Edit</button>
+                            <button class="btn btn-custom" onclick="deleteRoutine(${routine.id})">Delete</button>
+                        </div>
+                    </div>
+                `;
+                routineList.appendChild(newCard);
+            });
+        } catch (error) {
+            console.error('Error loading routines:', error);
+        }
+    }
+    
         function addNewRoutine() {
             const routineType = prompt('Enter the type of routine (e.g., Lights, Coffee Machine):');
             const routineTime = prompt('Enter the time for the routine (e.g., 10 PM, 6 AM):');
