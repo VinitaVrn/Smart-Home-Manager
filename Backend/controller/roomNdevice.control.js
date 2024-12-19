@@ -30,4 +30,28 @@ const deleteRoom=async (req,res)=>{
         })
     }
 }
-export {createroomNdevice,deleteRoom}
+
+const updateDevive = async (req,res) => {
+ const {username,lastName,Newname,devices} = req.body;
+
+ if(!username ||!lastName ||!Newname ||!devices){
+    res.status(400).json({msg:'any field is missing'})
+ }
+
+ const data = await roomNdevice.findOne({username, roomname: lastName});
+
+ if (!data) {
+    return res.status(404).json({msg: 'Record not found'});
+ }
+
+ data.username = username;
+ data.roomname = Newname;
+ data.device = devices;
+
+ await data.save();
+
+ res.satus(200).json({msg:'udated successfully'})
+
+
+}
+export {createroomNdevice,deleteRoom,updateDevive}
