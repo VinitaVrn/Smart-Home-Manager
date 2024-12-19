@@ -10,15 +10,15 @@ const register=async (req, res)=>{
     if(!Username||!Password||!Name||!Email){
         return res.status(400).json({msg:"Bad request"})
     }
-    const hashedpassword=await argon2.hash(Password);
-
-    const newuser={
-        name:Name,
-        username:Username,
-        email:Email,
-        password:hashedpassword,
-    }  
+    
     try{
+        const hashedpassword=await argon2.hash(Password);
+        const newuser={
+            name:Name,
+            username:Username,
+            email:Email,
+            password:hashedpassword,
+        }  
       await user.create(newuser)
       res.status(201).json({msg:"Account created successfully"})
     }catch(err){
