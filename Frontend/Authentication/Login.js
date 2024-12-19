@@ -7,8 +7,10 @@ function handleLogin(e) {
 }
 
 async function fetchData(loginData) {
+    console.log(loginData)
     try {
-        const response = await axios.post('not have link', loginData);
+        const response = await axios.post('http://localhost:4000/user/login', loginData);
+        console.log(response.data)
         if (response.data.success) {
             window.location.href = 'not have link';  //link need
         } else {
