@@ -41,7 +41,7 @@ try{
 
 document.getElementById('roomForm').addEventListener('submit' , addRoom)
 function Dashboard() {
-    window.location.href = " dashboad link ";   // dashboard link need
+    window.location.href = "../Dashboard.html";   // dashboard link need
 }
 
 

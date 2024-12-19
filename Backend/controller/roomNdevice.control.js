@@ -2,13 +2,14 @@ import { user,roomNdevice } from "../models/user.model.js";
 import dotenv from "dotenv";
 dotenv.config();
 const createroomNdevice= async (req,res)=>{
+    const device=req.body.device
     const username=res.locals.username;
     const roomname=res.locals.roomname;
     try{
     const new_roomNdevice={
         username,
         roomname,
-        device:devices
+        device,
     }
     await roomNdevice.create(new_roomNdevice);
     res.status(201).json({msg:"room and device added successfully"});
@@ -38,7 +39,7 @@ const updateDevive = async (req,res) => {
     res.status(400).json({msg:'any field is missing'})
  }
 
- const data = await roomNdevice.findOne({username, roomname: lastName});
+ const data = await roomNdevice.findOne({username:username, roomname: lastName});
 
  if (!data) {
     return res.status(404).json({msg: 'Record not found'});
@@ -50,7 +51,7 @@ const updateDevive = async (req,res) => {
 
  await data.save();
 
- res.satus(200).json({msg:'udated successfully'})
+ res.status(200).json({msg:'udated successfully'})
 
 
 }

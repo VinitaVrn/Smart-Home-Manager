@@ -23,7 +23,6 @@ async function registerUser(userData){
         // } else {
         //     alert('Invalid username or password. Please try again.');
         // }
-        const response = await axios.post("Api link" , userData)    //   Api link need
             window.location.href = '../SetupDevice/setupDevice.html';              
     }catch(error){
         console.error('Error during API call:', error);
