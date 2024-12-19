@@ -146,7 +146,7 @@
             <img src="https://raw.githubusercontent.com/VinitaVrn/Smart-Home-Manager/refs/heads/main/Frontend/SetupDevice/transparent_vsmart.png?token=GHSAT0AAAAAACYW4HWSAEHUBLE6JTZQDXT4Z3D6QYA" width="100" alt="Smart Home Logo">
         </div>
         <a href="#dashboard">Dashboard</a>
-        <a href="#routines">Routines</a>
+        <a href="addRoutine.html">Routines</a>
         <a href="#energy">Energy Usage</a>
         <a href="#alerts">Alerts</a>
     </nav>
@@ -222,6 +222,28 @@
     </footer>
 
     <script>
+        
+         async function loadRoutines() {
+        try {
+            const response = await fetch('https://your-backend-api.com/routines'); // Replace with your API URL
+            const routines = await response.json();
+            const routineList = document.getElementById('dashboard-routines-list');
+            routineList.innerHTML = '';
+            routines.forEach(routine => {
+                const newCard = document.createElement('div');
+                newCard.classList.add('card');
+                newCard.innerHTML = `
+                    <div class="card-body">
+                        <p>${routine.type} at ${routine.time}</p>
+                    </div>
+                `;
+                routineList.appendChild(newCard);
+            });
+        } catch (error) {
+            console.error('Error loading routines:', error);
+        }
+    }
+
         function toggleDevice(deviceId, switchElement) {
             const device = document.getElementById(deviceId);
             if (switchElement.checked) {
