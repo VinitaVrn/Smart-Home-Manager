@@ -16,11 +16,11 @@ document.addEventListener("DOMContentLoaded" , function(){
 async function registerUser(userData){
     try {
         const response = await axios.post("Api link" , userData)    //   Api link need
-        if (response.data.success) {
-            window.location.href = 'SetupDevice\setupDevice.html';              
-        } else {
-            alert('Invalid username or password. Please try again.');
-        }
+      
+            window.location.href = '../SetupDevice/setupDevice.html';              
+     
+           
+        
     }catch(error){
         console.error('Error during API call:', error);
             alert('Something went wrong. Please try again.')
