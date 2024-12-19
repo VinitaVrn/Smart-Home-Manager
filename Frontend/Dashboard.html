@@ -173,7 +173,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Thermostat</h5>
                         <p id="thermostat-status">Temperature: 22°C</p>
-                        <button class="btn btn-custom" onclick="adjustThermostat('thermostat-status')">Adjust</button>
+                        <input type="range" min="10" max="30" value="22" class="slider" id="thermostat-slider" oninput="updateThermostat('thermostat-status', this.value)">
                     </div>
                 </div>                
             </div>
@@ -233,14 +233,8 @@
             }
         }
 
-        function adjustThermostat(thermostatId) {
-            const temperature = prompt('Enter new temperature (10°C to 30°C):');
-            const tempNumber = parseFloat(temperature);
-            if (!isNaN(tempNumber) && tempNumber >= 10 && tempNumber <= 30) {
-                document.getElementById(thermostatId).textContent = `Temperature: ${tempNumber}°C`;
-            } else {
-                alert('Please enter a valid temperature between 10°C and 30°C.');
-            }
+        function updateThermostat(thermostatId, value) {
+            document.getElementById(thermostatId).textContent = `Temperature: ${value}°C`;
         }
 
         function addRoutine() {
