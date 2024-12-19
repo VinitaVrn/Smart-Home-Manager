@@ -9,11 +9,9 @@ function handleLogin(e) {
 async function fetchData(loginData) {
     try {
         const response = await axios.post('https://669b-2401-4900-7b15-c1a8-1df5-bee8-d117-c8fa.ngrok-free.app/user/login', loginData);
-        if (response.data.success) {
             window.location.href = 'not have link';  //link need
-        } else {
-            alert('Invalid username or password. Please try again.');
-        }
+            
+    
     } catch (error) {
         console.error('Error during login request:', error);
         alert('Something went wrong. Please try again later.');
