@@ -7,8 +7,15 @@ function handleLogin(e) {
 }
 
 async function fetchData(loginData) {
+    console.log(loginData)
     try {
+<<<<<<< HEAD
         const response = await axios.post('https://669b-2401-4900-7b15-c1a8-1df5-bee8-d117-c8fa.ngrok-free.app/user/login', loginData);
+=======
+        const response = await axios.post('http://localhost:4000/user/login', loginData);
+        console.log(response.data)
+        if (response.data.success) {
+>>>>>>> f2ad111ee30f5304de7164a6118de695509fbbaa
             window.location.href = 'not have link';  //link need
             
     
