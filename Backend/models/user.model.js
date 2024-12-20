@@ -52,7 +52,7 @@ const roomdevice= new Schema({
   },
   device:{
     type: [deviceschema],
-    default:[]
+    
 }
 })
 

@@ -1,14 +1,16 @@
 import { user,roomNdevice } from "../models/user.model.js";
 const createroomNdevice= async (req,res)=>{
-    const device=req.body.device
+
+    const devices=req.body.devices
     const username=res.locals.username;
     const roomname=res.locals.roomname;
     try{
     const new_roomNdevice={
         username,
         roomname,
-        device,
+        devices,
     }
+    console.log(new_roomNdevice)
     await roomNdevice.create(new_roomNdevice);
     res.status(201).json({msg:"room and device added successfully"});
     }catch(err){
