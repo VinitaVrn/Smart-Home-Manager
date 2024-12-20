@@ -1,6 +1,4 @@
 import { user,roomNdevice } from "../models/user.model.js";
-import dotenv from "dotenv";
-dotenv.config();
 const createroomNdevice= async (req,res)=>{
     const device=req.body.device
     const username=res.locals.username;
