@@ -23,4 +23,28 @@ const createroutine= async(req,res)=>{
   }
   
 }
-export {createroutine}
+
+const updateRoutine = async (req,res) => {
+  const {username,routine,time} = req.body;
+ 
+  if(!username||!routine||!time){
+    res.status(400).json({msg:"Bad request"})
+  }
+ 
+  const data = await routine.findOne({username:username, routine: routine});
+ 
+  if (!data) {
+     return res.status(404).json({msg: 'Record not found'});
+  }
+ 
+  data.username = username;
+  data.routine = routine;
+  data.time = time;
+ 
+  await data.save();
+ 
+  res.status(200).json({msg:'udated successfully'})
+ 
+ 
+ }
+export {createroutine,updateRoutine}
