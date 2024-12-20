@@ -1,13 +1,3 @@
-document.getElementById("homePart").addEventListener("change", function () {
-    const customRoom = document.getElementById("customRoomDiv");
-
-    if (this.value === "custom") {
-        customRoom.style.display = "block";
-    } else {
-        customRoom.style.display = "none";
-    }
-});
-
 async function addRoom(e) {
     e.preventDefault();
 
@@ -20,18 +10,16 @@ async function addRoom(e) {
     const device5 = document.getElementById("device5").value;
     const device6 = document.getElementById("device6").value;
 
-    const newRoom = roomName === "custom" ? customRoom : roomName;
+    const roomname = roomName === "custom" ? customRoom : roomName;
 
-    // Construct the devices object
-    const devices = {};
-    if (device1) devices.Lamps = device1;
-    if (device2) devices.TV = device2;
-    if (device3) devices.Fan = device3;
-    if (device4) devices.Light = device4;
-    if (device5) devices.RGBLight = device5;
-    if (device6) devices.SwitchBoard = device6;
+    const devices = [];
+    if (device1) devices.push({ devicename: "Lamps", state: false });
+    if (device2) devices.push({ devicename: "TV", state: false });
+    if (device3) devices.push({ devicename: "Fan", state: false });
+    if (device4) devices.push({ devicename: "Light", state: false });
+    if (device5) devices.push({ devicename: "RGBLight", state: false });
+    if (device6) devices.push({ devicename: "SwitchBoard", state: false });
 
-    // Get the username from localStorage
     const username = localStorage.getItem("username");
 
     if (!username) {
@@ -39,12 +27,10 @@ async function addRoom(e) {
         return;
     }
 
-    // Prepare the room data
-    const roomData = { username, newRoom, devices };
+    const roomData = { username, roomname, device: devices };
 
     try {
-        const res = await axios.post("http://localhost:4000/roomNdevice/create", roomData); // Replace with your API endpoint
-        console.log(res.data);
+        const res = await axios.post("http://localhost:4000/roomNdevice/create", roomData);
         if (res.status === 200) {
             alert("Room Added Successfully");
             document.getElementById("roomForm").reset();
@@ -58,18 +44,6 @@ async function addRoom(e) {
     }
 }
 
-document.getElementById("roomForm").addEventListener("submit", addRoom);
-
-function Dashboard() {
-    window.location.href = "../Dashboard.html";
-}
-
-// Fetch and display rooms and devices
-const yourDevices = document.getElementById("createRoom");
-
-
-// Fetch devices when the page loads
-document.addEventListener("DOMContentLoaded", getDevices);
 async function getDevices() {
     const username = localStorage.getItem("username");
 
@@ -78,20 +52,27 @@ async function getDevices() {
         return;
     }
 
-    try {
-        const response = await axios.get(`http://localhost:4000/${username}/room`);
-        const devices = response.data;
+    const yourDevices = document.getElementById("createRoom");
 
-        // Clear the existing devices before adding new ones
+    try {
+        const response = await axios.get(`api`);
+        const rooms = response.data;
+
         yourDevices.innerHTML = "";
 
-        devices.forEach((room, idx) => {
+        rooms.forEach((room) => {
             const roomElement = document.createElement("div");
             roomElement.className = "yourDevi";
 
+            const devicesList = room.device
+            .map(device => `<li>${device.devicename} - State: ${device.state ? "On" : "Off"}</li>`)
+                .join("");
+
             roomElement.innerHTML = `
                 <div class="card">
-                    <button onclick="handleRoom('${room.newRoom}')">${room.newRoom}</button>
+                    <h3>${room.roomname}</h3>
+                    <ul>${devicesList}</ul>
+                    <button onclick="handleRoom('${room.roomname}')">Edit Room</button>
                 </div>
             `;
 
@@ -107,30 +88,3 @@ async function handleRoom(roomName) {
     localStorage.setItem("currentRoom", roomName);
     window.location.href = "../EditDevice/EditForm.html";
 }
-
-
-
-
-
-
-    // {
-//     "username": "vinita",
-//     "Room": {
-    // [
-    //     {
-    //       "newRoom": "Living Room",
-    //       "devices": {
-    //         "Lamps": "Device_1_WiFi",
-    //         "TV": "Device_2_WiFi"
-    //       }
-    //     },
-    //     {
-    //       "newRoom": "Kitchen",
-    //       "devices": {
-    //         "Fan": "Device_3_WiFi",
-    //         "Light": "Device_4_WiFi"
-    //       }
-    //     }
-    //   ]
-    // }
-// }

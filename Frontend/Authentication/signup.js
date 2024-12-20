@@ -15,8 +15,8 @@ document.addEventListener("DOMContentLoaded" , function(){
 
 async function registerUser(userData) {
     try {
-        // const response = await axios.post("", userData);
-        // console.log(response.data);
+        const response = await axios.post("http://localhost:4000/user/signup", userData);
+        console.log(response.data);
         
         // Save username to localStorage
         localStorage.setItem('username', userData.Username);
@@ -24,7 +24,7 @@ async function registerUser(userData) {
         window.location.href = '../SetupDevice/setupDevice.html';
     } catch (error) {
         console.error("Error during registration:", error);
-        alert('Something went wrong. Please try again.');
+        // alert('Something went wrong. Please try again.');
     }
 }
 
