@@ -25,20 +25,20 @@ const createroutine= async(req,res)=>{
 }
 
 const updateRoutine = async (req,res) => {
-  const {username,routine,time} = req.body;
- 
-  if(!username||!routine||!time){
+  const {username,lastroutine,newroutine,time} = req.body;
+  
+  if(!username||!lastroutine||!time||!newroutine){
     res.status(400).json({msg:"Bad request"})
   }
  
-  const data = await routine.findOne({username:username, routine: routine});
+  const data = await routines.findOne({username:username, routine: lastroutine});
  
   if (!data) {
      return res.status(404).json({msg: 'Record not found'});
   }
  
   data.username = username;
-  data.routine = routine;
+  data.routine = newroutine;
   data.time = time;
  
   await data.save();
