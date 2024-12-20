@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Energy Usage</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, LightCoral, LightSkyBlue);
+      color: darkslategray;
+    }
+
+    h1, h2 {
+      margin: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .header {
+      background-color:transparent;
+      color: black; 
+      text-align: center;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 20, .5);
+    }
+
+    .header h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      font-size: 1rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .card h2 {
+      color: darkorange; 
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      border-bottom: 2px solid darkorange;
+      padding-bottom: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: mistyrose;
+      color: firebrick; 
+    }
+
+    tr:nth-child(even) {
+      background-color: ghostwhite;
+    }
+
+    tr:hover {
+      background-color: lightcoral;
+      transition: background-color 0.2s ease;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: dimgray;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px;
+      }
+      table {
+        font-size: 0.9em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Energy Usage Dashboard</h1>
+    <p>Track and optimize your device's energy consumption.</p>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <h2>Total Energy Consumption</h2>
+      <p id="total-energy">Loading...</p>
+    </div>
+
+    <div class="card">
+      <h2>Energy Breakdown by Device</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Device</th>
+            <th>Power Consumption (kW)</th>
+            <th>Uptime (Hours)</th>
+            <th>Energy Used (kWh)</th>
+          </tr>
+        </thead>
+        <tbody id="device-table">
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>© 2024 The Code Smiths | All Rights Reserved</p>
+  </div>
+
+  <script>
+    const API_URL = "-------api----------";
+    // Example response format:
+        // [
+        //   { name: "AC", powerConsumption: 2, uptimeHours: 10 },
+        //   
+        // ]
+
+    async function fetchEnergyData() {
+      try {
+        const response = await fetch(API_URL);
+        const data = await response.json();
+        let totalEnergy = 0;
+        const tableBody = document.getElementById("device-table");
+
+        data.forEach(device => {
+          const usage = device.powerConsumption * device.uptimeHours;
+          totalEnergy += usage;
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${device.name}</td>
+            <td>${device.powerConsumption}</td>
+            <td>${device.uptimeHours}</td>
+            <td>${usage.toFixed(2)} kWh</td>
+          `;
+          tableBody.appendChild(row);
+        });
+
+        document.getElementById("total-energy").textContent = `${totalEnergy.toFixed(2)} kWh`;
+
+      } catch (error) {
+        console.error("Error fetching energy data:", error);
+        document.getElementById("total-energy").textContent = "Error fetching data.";
+      }
+    }
+
+    fetchEnergyData();
+  </script>
+</body>
+</html>
+
+
+

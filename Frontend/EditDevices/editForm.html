@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Room</title>
+    <link rel="stylesheet" href="./editForm.css">
+</head>
+<body>
+    <div class="smart-home">
+        <header>
+            <div id="logo">
+                <img src="./logo2.png" alt="V-Smartz"> 
+            </div>
+        </header>
+
+        <main>
+            <div id="yourRoom">
+                    <h1 id="itsMyRoom">Your Room Part</h1> 
+                    <p id="wifiStatus"></p>
+            </div>
+
+            <div class="device-grid">
+                <!-- Lamps -->
+                <form action="" id="lamps">
+                    <div class="section">
+                        <div class="device">
+                            <div class="flot">
+                                <h3>Lamps</h3>
+                                <div>
+                                    <button class="status">Off</button>
+                                    <button onclick="deviceDelete()" class="deviceDelete">Delete</button>
+                                </div>
+                            </div>
+                            <!-- Light control -->
+                            <div class="light-control">
+                                <h3>Brightness</h3>
+                                <input type="range" min="0" max="100" value="65">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Fan -->
+                <form action="" id="fan">
+                    <div class="section">
+                        <div class="device">
+                            <div class="flot">
+                                <h3>Fan</h3>
+                                <div>
+                                    <button class="status">Off</button>
+                                    <button onclick="deviceDelete()" class="deviceDelete">Delete</button>
+                                </div>
+                            </div>
+                            <!-- Fan speed control -->
+                            <div class="light-control">
+                                <h3>Speed</h3>
+                                <input type="range" min="0" max="100" value="65">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Light -->
+                <form id="light">
+                    <div class="section">
+                        <div class="device">
+                            <div class="flot">
+                                <h3>Light</h3>
+                                <div>
+                                    <button class="status">Off</button>
+                                    <button onclick="deviceDelete()" class="deviceDelete">Delete</button>
+                                </div>
+                            </div>
+                            <!-- Light control -->
+                            <div class="light-control">
+                                <h3>Brightness</h3>
+                                <input type="range" min="0" max="100" value="65">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- RGB Light -->
+                <form id="rgblight">
+                    <div class="section">
+                        <div class="device">
+                            <div class="flot">
+                                <h3>RGB Light</h3>
+                                <div>
+                                    <button class="status">Off</button>
+                                    <button onclick="deviceDelete()" class="deviceDelete">Delete</button>
+                                </div>
+                            </div>
+                            <!-- RGB Light control -->
+                            <div class="light-control">
+                                <h3>Brightness</h3>
+                                <input type="range" min="0" max="100" value="65">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+<!--                                   sample              -->
+                <!-- Unknown Device -->
+                <form id="unknown">
+                    <div class="section">
+                        <div class="device">
+                            <div class="flot">
+                                <h3>Unknown Device</h3>
+                                <div>
+                                    <button class="status">Off</button>
+                                    <button onclick="deviceDelete()" class="deviceDelete">Delete</button>
+                                </div>
+                            </div>
+                            <!-- Unknown Device control -->
+                            <div class="light-control">
+                                <h3>Brightness</h3>
+                                <input type="range" min="0" max="100" value="65">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+<!--           ........................................................          -->
+                <!-- TV -->
+                <form id="tv">
+                    <div class="section">
+                        <div class="flot">
+                            <div class="devices">
+                                <h3>TV</h3>
+                                <div>
+                                    <button class="status">Off</button>
+                                    <button onclick="deviceDelete()" class="deviceDelete">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Switch Board -->
+                <form id="switchboard">
+                    <div class="section">
+                        <div class="flot">
+                            <div class="devices">
+                                <h3>Switch Board</h3>
+                                <button class="status">Off</button>
+                                <button onclick="deviceDelete()" class="deviceDelete">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div id="backDelete">
+                <button onclick="DashBoard()">Back</button>
+                <button onclick="RemoveRooms()">Delete</button>    
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./editForm.js"></script>
+</body>
+</html>
