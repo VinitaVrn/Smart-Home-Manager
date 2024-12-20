@@ -9,9 +9,9 @@ function handleLogin(e) {
 async function fetchData(loginData) {
     console.log(loginData)
     try {
-        const response = await axios.post(' link', loginData);
+        const response = await axios.post('http://localhost:4000/user/login', loginData);
         console.log(response.data)
-            window.location.href = '';  //link need
+            window.location.href = '../Dashboard.html';  //link need
         }
      catch (error) {
         console.error('Error during login request:', error);

@@ -43,7 +43,7 @@ async function addRoom(e) {
     const roomData = { username, newRoom, devices };
 
     try {
-        const res = await axios.post("http://localhost:4000/room/add", roomData); // Replace with your API endpoint
+        const res = await axios.post("http://localhost:4000/roomNdevice/create", roomData); // Replace with your API endpoint
         console.log(res.data);
         if (res.status === 200) {
             alert("Room Added Successfully");

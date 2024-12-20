@@ -3,12 +3,13 @@ import jwt from "jsonwebtoken";
 
 const secretkey=process.env.JWT_KEY;
 export const validatedata=async (req,res,next)=>{
-    const {username,roomname}=req.body;
-    res.locals.username=username;
-    res.locals.roomname=roomname;
-    if(!username||!roomname){
+    const {username,newRoom}=req.body;
+    
+    if(!username||!newRoom){
         return res.status(400).json({msg:"Bad request"})
     }
+    res.locals.username=username;
+    res.locals.roomname=newRoom;
     const validuser= await user.findOne({username})
     
     if(!validuser){

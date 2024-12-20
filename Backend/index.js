@@ -15,7 +15,7 @@ app.use("/user",userRouter)
 app.use("/roomNdevice",roomNdeviceRouter)
 app.use("/routine",routineRoute)
 
-const mongodb=process.env.MONGODB_URL
+const mongodb= "mongodb://127.0.0.1:27017/SHM"
 
 app.listen(4000,async()=>{
   await mongoose.connect(mongodb);
