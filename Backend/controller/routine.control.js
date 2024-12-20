@@ -64,4 +64,6 @@ const updateRoutine = async (req,res) => {
   }
 };
 
+// const getroutine= async
+
 export {createroutine,updateRoutine,deleteRoutine}
