@@ -55,4 +55,18 @@ const updateDevive = async (req,res) => {
 
 
 }
-export {createroomNdevice,deleteRoom,updateDevive}
+const getroom= async (req,res)=>{
+    const {username,roomname}=req.body;
+    if(!username||!roomname){
+        return res.status(400).json({msg:"Bad request"})
+    }
+    try{
+        const data= await roomNdevice.findOne({username,roomname})
+        return res.status(200).json({msg:"data sent success",roomdata:data})
+    }catch(err){
+        res.status(500).json({msg:"Internal server error",
+            error:err.message
+        })
+    }
+}
+export {createroomNdevice,deleteRoom,updateDevive,getroom}
