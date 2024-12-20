@@ -1,0 +1,203 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    background-color: whitesmoke;
+    /* color: white; */
+    padding: 30px;
+}
+
+#logo img {
+    width: 300px;
+}
+
+main #yourRoom {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 20px 6px;
+    padding: 12px;
+    border-radius: 25px;
+    border: 4px solid #86949e;
+    background-color: whitesmoke;
+}
+
+#yourRoom h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #2980B9;
+}
+
+#wifiStatus {
+    font-size: 22px;
+    color: #27AE60;
+    font-weight: bold;
+}
+
+.device-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 20px 6px;
+    padding: 12px 60px;
+    border-radius: 25px;
+    gap: 30px;
+    background-color: #F4F6F7;
+}
+
+.device-grid .section {
+    border: 2px solid #BDC3C7;
+    border-radius: 13px;
+    padding: 40px;
+    text-align: center;
+    justify-content: center;
+    background-color: #FFFFFF;
+}
+
+.device-grid .section:hover {
+    background-color: #EAF2F8;
+}
+
+.device-grid .flot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.device-grid .flot h3 {
+    font-weight: bold;
+    font-size: 30px;
+    color: #34495E;
+    margin-right: 20px;
+}
+
+.device-grid .flot .status {
+    text-decoration: none;
+    border: 2px solid #dccdcd;
+    padding: 12px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 25px;
+    background-color: #f23131;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+
+.device-grid .light-control {
+    padding-top: 20px;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 20px;
+    text-align: center;
+}
+
+.device-grid .light-control h3 {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 10px 0;
+    color: #7F8C8D;
+}
+
+.device-grid .light-control input[type="range"] {
+    width: 80%;
+    margin-top: 40px;
+    height: 6px;
+    background-color: #BDC3C7;
+    border-radius: 5px;
+}
+
+.device-grid .light-control input[type="range"]:focus {
+    outline: none;
+    background-color: #3498DB;
+}
+
+.device-grid .light-control input[type="color"] {
+    width: 100%;
+    height: 50px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 2px solid #BDC3C7;
+}
+
+#backDelete {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+#backDelete button {
+    text-decoration: none;
+    margin-bottom: 40px;
+    padding: 18px 35px;
+    font-size: 22px;
+    font-weight: bold;
+    border: 4px solid #E74C3C;
+    background-color: transparent;
+    color: #E74C3C;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#backDelete button:hover {
+    background-color: #E74C3C;
+    color: white;
+}
+
+#backDelete button:first-child {
+    border-color: #2ECC71;
+    color: #2ECC71;
+}
+
+#backDelete button:first-child:hover {
+    background-color: #2ECC71;
+    color: white;
+
+}
+
+
+@media (max-width: 1068px) {
+    .device-grid {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 480px) {
+    .device-grid {
+        grid-template-columns: 1fr; 
+    }
+}
+
+.devices {
+   
+    width: 200px;
+    min-height: 200px;
+}
+
+.devices .status{
+    margin-top: 80px;
+   font-size: 50px;
+   
+}
+#lamps, #fan, #light, #rgblight, #tv, #switchboard {
+    display: none;
+}
+
+.deviceDelete{
+    text-decoration: none;
+    border: 2px solid #dccdcd;
+    padding: 12px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 25px;
+    background-color: #f23131;
+    color: white;
+    transition: background-color 0.3s ease-in-out;
+}
+
