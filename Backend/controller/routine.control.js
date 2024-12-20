@@ -47,4 +47,21 @@ const updateRoutine = async (req,res) => {
  
  
  }
-export {createroutine,updateRoutine}
+
+ const deleteRoutine = async (req, res) => {
+  const { username, routine } = req.body;
+
+  try {
+    const result = await routines.deleteOne({ username, routine });
+
+    if (result.deletedCount === 0) {
+      return res.status(400).json({ msg: "Check your username and routine" });
+    }
+
+    res.status(200).json({ msg: "Routine deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ msg: "Internal server error", error: error.message });
+  }
+};
+
+export {createroutine,updateRoutine,deleteRoutine}
