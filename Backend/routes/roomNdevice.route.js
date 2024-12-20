@@ -1,9 +1,10 @@
 import {Router} from "express";
-import { createroomNdevice,deleteRoom ,updateDevive,getroom} from "../controller/roomNdevice.control.js";
+import { createroomNdevice,deleteRoom ,updateDevive,getroom,updateState} from "../controller/roomNdevice.control.js";
 import { validatedata } from "../middlewares/device.middleware.js";
 const roomNdeviceRouter=Router();
 
 roomNdeviceRouter.post('/update',updateDevive)
+roomNdeviceRouter.post('/updateState',updateState)
 roomNdeviceRouter.get("/send",getroom)
 roomNdeviceRouter.use(validatedata);
 roomNdeviceRouter.post("/create",createroomNdevice)
