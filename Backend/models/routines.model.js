@@ -17,4 +17,5 @@ const routineSchema= new Schema({
 {timestamps:true}
 )
 
-export const routine= model("routine",routineSchema);
+const routines= model("routine",routineSchema);
+export {routines}
