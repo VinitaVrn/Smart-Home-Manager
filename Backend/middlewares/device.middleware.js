@@ -1,5 +1,7 @@
 import { user } from "../models/user.model.js"; 
+import jwt from "jsonwebtoken";
 
+const secretkey=process.env.JWT_KEY;
 export const validatedata=async (req,res,next)=>{
     const {username,roomname}=req.body;
     res.locals.username=username;
@@ -14,3 +16,21 @@ export const validatedata=async (req,res,next)=>{
     }
     next();
 }
+
+// export const tokenvalidate=async(req,res,next)=>{
+//   const token= req.headers["authorization"];
+//   if(!token){
+//     res.status(401).json({message:"Unauthorized access",
+//       error:err.message
+//     })
+//   }
+//   try{
+//   const payload=jwt.verify(token,secretkey);
+//   res.locals=payload
+//   next()
+//   }catch(err){
+//     res.status(401).json({message:"Unauthorized access",
+//       error:err.message
+//     })
+//   }
+// }
