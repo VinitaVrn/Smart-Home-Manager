@@ -11,9 +11,7 @@ async function fetchData(loginData) {
     try {
         const response = await axios.post(' link', loginData);
         console.log(response.data)
-        if (response.data.success) {
-            window.location.href = 'dashborad link';  //link need
-         }  
+            window.location.href = '';  //link need
         }
      catch (error) {
         console.error('Error during login request:', error);

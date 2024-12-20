@@ -13,22 +13,22 @@ document.addEventListener("DOMContentLoaded" , function(){
     })
 })
 
-async function registerUser(userData){
+async function registerUser(userData) {
     try {
-        const response = await axios.post("http://localhost:4000/user/signup" , userData) 
-        //    //   Api link need
-        console.log(response.data)
-        // (response.data.success) {
-            window.location.href = 'SetupDevice\setupDevice.html';              
-        // } else {
-        //     alert('Invalid username or password. Please try again.');
-        // }
-            window.location.href = '../SetupDevice/setupDevice.html';              
-    }catch(error){
-        console.error('Error during API call:', error);
-            alert('Something went wrong. Please try again.')
+        const response = await axios.post("http://localhost:4000/user/signup", userData);
+        console.log(response.data);
+        
+        // Save username to localStorage
+        localStorage.setItem('username', userData.Username);
+        
+        window.location.href = 'SetupDevice/setupDevice.html';
+    } catch (error) {
+        console.error("Error during registration:", error);
+        alert('Something went wrong. Please try again.');
     }
 }
+
+
 function toggleForms() {
     window.location.href = 'Login.html';
 }
