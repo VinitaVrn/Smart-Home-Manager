@@ -1,5 +1,6 @@
 import  {routines} from "../models/routines.model.js";
 import { user } from "../models/user.model.js";
+
 const createroutine= async(req,res)=>{
   const {username,routine,time}=req.body;
   if(!username||!routine||!time){
@@ -64,6 +65,19 @@ const updateRoutine = async (req,res) => {
   }
 };
 
-// const getroutine= async
+const getroutine= async(req,res)=>{
+  const {username}=req.body;
+  if(!username){
+    return res.status(400).json({msg:"Bad request"})
+ }
+try{
+    const data= await routines.find({username})
+    return res.status(200).json({msg:"data sent success",routines:data})
+}catch(err){
+    res.status(500).json({msg:"Internal server error",
+        error:err.message
+    })
+ }
+}
 
-export {createroutine,updateRoutine,deleteRoutine}
+export {createroutine,updateRoutine,deleteRoutine,getroutine}

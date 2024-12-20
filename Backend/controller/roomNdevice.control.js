@@ -19,6 +19,7 @@ const createroomNdevice= async (req,res)=>{
         })
     }
 }
+
 const deleteRoom=async (req,res)=>{
     const username=res.locals.username;
     const roomname=res.locals.roomname;
@@ -55,6 +56,7 @@ const updateDevive = async (req,res) => {
 
 
 }
+
 const getroom= async (req,res)=>{
     const {username}=req.body;
     if(!username){
@@ -76,7 +78,7 @@ const updateState = async (req, res) => {
     if (!username || !roomname || !devicename || typeof newState !== "boolean") {
       return res.status(400).json({ error: "Invalid input data" });
     }
-  
+
     try {
       const updatedRoom = await roomNdevice.findOneAndUpdate(
         { username, roomname, "device.devicename": devicename },
@@ -91,5 +93,7 @@ const updateState = async (req, res) => {
     } catch (err) {
       res.status(500).json({ error: "Server error", details: err.message });
     }
-  };
+};
+
+
 export {createroomNdevice,deleteRoom,updateDevive,getroom,updateState}
