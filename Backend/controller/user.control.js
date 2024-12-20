@@ -4,7 +4,7 @@ dotenv.config();
 import jwt from "jsonwebtoken"
 import argon2 from "argon2";
 
-const secretkey=process.env.JWT_KEY;
+const secretkey="ggvghvgfvfhcvfg";
 const register=async (req, res)=>{
     const {Name,Username,Email,Password}=req.body;
     if(!Username||!Password||!Name||!Email){
@@ -33,6 +33,7 @@ const register=async (req, res)=>{
 const login=async(req,res)=>{
     const {Username,Password}=req.body;
     if(!Username ||!Password){
+        console.log(Username,Password)
         return res.status(400).json({msg:"Bad request"})
     }
     const userdata=await user.findOne({username:Username});
@@ -42,6 +43,7 @@ const login=async(req,res)=>{
     try{
        const iscorrectuser=await argon2.verify(userdata.password,Password);
        if(iscorrectuser){
+        
         const token= jwt.sign(
             {
               id:userdata._id,
