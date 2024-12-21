@@ -139,52 +139,7 @@
     <div class="wrapper">
       <div class="container">
         <header>Manage Your Routines</header>
-        <!-- <h6 class="section-title">Existing Routines</h6> -->
-        <div id="routines-list">
-          <!-- Example routine cards -->
-          <div class="card">
-            <div class="card-body">
-              <p>Turn off all lights at 10 PM</p>
-              <div>
-                <button
-                  type="button"
-                  class="btn btn-custom"
-                  onclick="editRoutine(this)"
-                >
-                  Edit
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-custom"
-                  onclick="deleteRoutine(this)"
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-body">
-              <p>Turn on coffee machine at 6 AM</p>
-              <div>
-                <button
-                  type="button"
-                  class="btn btn-custom"
-                  onclick="editRoutine(this)"
-                >
-                  Edit
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-custom"
-                  onclick="deleteRoutine(this)"
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div id="routines-list"></div>
 
         <div class="text-center">
           <button
@@ -201,89 +156,90 @@
     <footer>© Powered by CodeSmiths</footer>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-      // Ensure you include Axios in your HTML file
-
       const username = localStorage.getItem("username");
- async function loadRoutines() {
-  
-  try {
-   
-    const response = await axios.get(`http://localhost:4000/routine/get/${username}`); // Replace with your API URL
-    const routines = response.data; // Axios stores response data in the data property
-    const routineList = document.getElementById("routines-list");
-    routineList.innerHTML = ""; // Clear the current UI
 
-    routines.forEach((routine) => {
-      const newCard = document.createElement("div");
-      newCard.classList.add("card");
-      newCard.innerHTML = `
-        <div class="card-body">
-          <p>${routine.type} at ${routine.time}</p>
-          <div>
-            <button class="btn btn-custom" onclick="editRoutine(${routine.id})">Edit</button>
-            <button class="btn btn-custom" onclick="deleteRoutine(${routine.id})">Delete</button>
-          </div>
-        </div>
-      `;
-      routineList.appendChild(newCard);
-    });
-  } catch (error) {
-    console.error("Error loading routines:", error);
-    alert("Failed to load routines. Please try again.");
-  }
-}
+      async function loadRoutines() {
+        try {
+          const response = await axios.get(`http://localhost:4000/routine/get/${username}`);
+          const routines = response.data;
+          const routineList = document.getElementById("routines-list");
+          routineList.innerHTML = "";
 
-async function addNewRoutine() {
-  const routineType = prompt(
-    "Enter the type of routine (e.g., Lights, Coffee Machine):"
-  );
-  const routineTime = prompt(
-    "Enter the time for the routine (e.g., 10 PM, 6 AM):"
-  );
-
-  if (routineType && routineTime) {
-    try {
-      const newRoutine = { username,type: routineType, time: routineTime };
-
-      const response = await axios.post(
-        "http://localhost:4000/routine/create",
-        newRoutine,
-       
-      );
-
-      if (response.status === 201 || response.status === 200) { // Confirm successful response
-        alert("Routine added successfully!");
-        await loadRoutines(); // Refresh the list after adding
-      } else {
-        console.error("Error adding routine:", response.statusText);
-      }
-    } catch (error) {
-      console.error("Error adding routine:", error);
-      alert("Failed to add routine. Please try again.");
-    }
-  }
-}
-      function editRoutine(button) {
-        const cardBody = button.closest(".card-body");
-        const routineType = prompt(
-          "Edit the type of routine:",
-          cardBody.querySelector("p").textContent.split(" at ")[0]
-        );
-        const routineTime = prompt(
-          "Edit the time for the routine:",
-          cardBody.querySelector("p").textContent.split(" at ")[1]
-        );
-        if (routineType && routineTime) {
-          cardBody.querySelector(
-            "p"
-          ).textContent = `${routineType} at ${routineTime}`;
+          routines.forEach((routine) => {
+            const newCard = document.createElement("div");
+            newCard.classList.add("card");
+            newCard.innerHTML = `
+              <div class="card-body">
+                <p>${routine.type} at ${routine.time}</p>
+                <div>
+                  <button class="btn btn-custom" onclick="editRoutine(${routine.id})">Edit</button>
+                  <button class="btn btn-custom" onclick="deleteRoutine(${routine.id})">Delete</button>
+                </div>
+              </div>
+            `;
+            routineList.appendChild(newCard);
+          });
+        } catch (error) {
+          console.error("Error loading routines:", error);
+          alert("Failed to load routines. Please try again.");
         }
       }
 
-      function deleteRoutine(button) {
-        const card = button.closest(".card");
-        card.remove();
+      async function addNewRoutine() {
+        const routineType = prompt("Enter the type of routine (e.g., Lights, Coffee Machine):");
+        const routineTime = prompt("Enter the time for the routine (e.g., 10 PM, 6 AM):");
+
+        if (routineType && routineTime) {
+          try {
+            const newRoutine = { username, type: routineType, time: routineTime };
+            const response = await axios.post("http://localhost:4000/routine/create", newRoutine);
+
+            if (response.status === 201 || response.status === 200) {
+              alert("Routine added successfully!");
+              await loadRoutines();
+            } else {
+              console.error("Error adding routine:", response.statusText);
+            }
+          } catch (error) {
+            console.error("Error adding routine:", error);
+            alert("Failed to add routine. Please try again.");
+          }
+        }
       }
+
+      async function editRoutine(id) {
+        const routine = prompt("Edit the routine type and time (format: Type at Time):");
+        if (routine) {
+          const [type, time] = routine.split(" at ");
+          if (type && time) {
+            try {
+              await axios.put(`http://localhost:4000/routine/update/${id}`, { type, time });
+              alert("Routine updated successfully!");
+              await loadRoutines();
+            } catch (error) {
+              console.error("Error updating routine:", error);
+              alert("Failed to update routine. Please try again.");
+            }
+          } else {
+            alert("Invalid format. Please provide in 'Type at Time'.");
+          }
+        }
+      }
+
+      async function deleteRoutine(id) {
+        if (confirm("Are you sure you want to delete this routine?")) {
+          try {
+            await axios.delete(`http://localhost:4000/routine/delete/${id}`);
+            alert("Routine deleted successfully!");
+            await loadRoutines();
+          } catch (error) {
+            console.error("Error deleting routine:", error);
+            alert("Failed to delete routine. Please try again.");
+          }
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", loadRoutines);
     </script>
   </body>
 </html>
