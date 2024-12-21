@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded" , function(){
 async function registerUser(userData) {
     try {
 
-        const response = await axios.post("https://v-smartz-default-rtdb.firebaseio.com/Users.json", userData);
+        const response = await axios.post("http://localhost:4000/user/signup", userData);
         console.log("Response data:", response.data)
 
         // Save username to localStorage

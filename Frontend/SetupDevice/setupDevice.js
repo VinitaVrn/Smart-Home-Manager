@@ -11,7 +11,7 @@ document.getElementById("homePart").addEventListener("change", function () {
 
 async function addRoom(e) {
   e.preventDefault();
-
+ console.log("j")
   const roomName = document.getElementById("homePart").value;
   const customRoom = document.getElementById("customRoom").value;
   const device1 = document.getElementById("device1").value;
@@ -25,12 +25,12 @@ async function addRoom(e) {
   const newRoom = roomName === "custom" ? customRoom : roomName;
 
   const devices = [];
-  if (device1)  devices.push({devicename:device1});
-  if (device2)  devices.push({devicename:device2});
-  if (device3)  devices.push({devicename:device3});
-  if (device4)  devices.push({devicename:device4});
-  if (device5)  devices.push({devicename:device5});
-  if (device6)  devices.push({devicename:device6});
+  if (device1)  devices.push({devicename:"Lamps"});
+  if (device2)  devices.push({devicename:"TV"});
+  if (device3)  devices.push({devicename:"Fan"});
+  if (device4)  devices.push({devicename:"Light"});
+  if (device5)  devices.push({devicename:"RGBLight"});
+  if (device6)  devices.push({devicename:"SwitchBoard"});
 
   const username = localStorage.getItem("username");
 
@@ -40,12 +40,12 @@ async function addRoom(e) {
       return;
   }
 
-  const roomData = { "newRoom": newRoom, "Devices": devices };
+  const roomData = { "username":username,"newRoom": newRoom, "Devices": devices };
 
   try {
       // Save room data under the user's username in Firebase
       const res = await axios.post(
-          `https://v-smartz-default-rtdb.firebaseio.com/${username}/Room.json`,
+          `http://localhost:4000/roomNdevice/create`,
           roomData
       );
       console.log("Response data:", res.data);
@@ -61,27 +61,27 @@ async function addRoom(e) {
 document.getElementById("roomForm").addEventListener("submit", addRoom);
 
 // Skip Button
-function Dashboard() {
+ function Dashboard() {
   window.location.href = "../Dashboard.html";
 }
 
 
 
-    const roomData = { username, roomname, device: devices };
+    // const roomData = { username, roomname, device: devices };
 
-    try {
-        const res = await axios.post("http://localhost:4000/roomNdevice/create", roomData);
-        if (res.status === 200) {
-            alert("Room Added Successfully");
-            document.getElementById("roomForm").reset();
-            document.getElementById("customRoomDiv").style.display = "none";
-        } else {
-            alert("Failed to add room. Please try again.");
-        }
-    } catch (error) {
-        console.error("Error adding room:", error);
-        alert("An error occurred while adding the room.");
-    }
+    // try {
+    //     const res = await axios.post("http://localhost:4000/roomNdevice/create", roomData);
+    //     if (res.status === 200) {
+    //         alert("Room Added Successfully");
+    //         document.getElementById("roomForm").reset();
+    //         document.getElementById("customRoomDiv").style.display = "none";
+    //     } else {
+    //         alert("Failed to add room. Please try again.");
+    //     }
+    // } catch (error) {
+    //     console.error("Error adding room:", error);
+    //     alert("An error occurred while adding the room.");
+    // }
 
 
 async function getDevices() {

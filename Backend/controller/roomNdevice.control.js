@@ -8,10 +8,11 @@ const createroomNdevice= async (req,res)=>{
     const new_roomNdevice={
         username,
         roomname,
-        devices,
+        device:devices,
     }
-    console.log(new_roomNdevice)
-    await roomNdevice.create(new_roomNdevice);
+   
+    const rd=await roomNdevice.create(new_roomNdevice);
+   
     res.status(201).json({msg:"room and device added successfully"});
     }catch(err){
         res.status(500).json({msg:"Internal server error!",

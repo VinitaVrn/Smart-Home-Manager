@@ -14,7 +14,7 @@ function handleLogin(e) {
 
 async function fetchData(loginData) {
     try {
-        const response = await axios.get('https://v-smartz-default-rtdb.firebaseio.com/Users.json');
+        const response = await axios.get('http://localhost:4000/user/login');
         const users = response.data;
         if (!users) {
             alert("No users found. Please sign up first.");
