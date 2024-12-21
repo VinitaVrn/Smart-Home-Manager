@@ -2,15 +2,17 @@ import  {routines} from "../models/routines.model.js";
 import { user } from "../models/user.model.js";
 
 const createroutine= async(req,res)=>{
-  const {username,routine,time}=req.body;
-  if(!username||!routine||!time){
+  const {username,type,time}=req.body;
+  console.log(username,type,time)
+  if(!username||!type||!time){
      res.status(400).json({msg:"Bad request"})
   }
   
+
   try{
     const newroutine={
       username,
-      routine,
+      routine:type,
       time,
      }
     await routines.create(newroutine)
@@ -66,7 +68,7 @@ const updateRoutine = async (req,res) => {
 };
 
 const getroutine= async(req,res)=>{
-  const {username}=req.body;
+  const {username}=req.params;
   if(!username){
     return res.status(400).json({msg:"Bad request"})
  }
