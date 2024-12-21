@@ -31,6 +31,7 @@ async function addRoom(e) {
 
     try {
         const res = await axios.post("http://localhost:4000/roomNdevice/create", roomData);
+        console.log(roomData)
         if (res.status === 200) {
             alert("Room Added Successfully");
             document.getElementById("roomForm").reset();

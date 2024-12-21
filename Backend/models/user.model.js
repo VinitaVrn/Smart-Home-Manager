@@ -39,7 +39,7 @@ const deviceschema= new Schema({
       default:false
     },
     timing:{
-      type:string
+      type:String
     }
 },
 {timestamps: true })
