@@ -3,7 +3,7 @@ import { user } from "../models/user.model.js";
 
 const createroutine= async(req,res)=>{
   const {username,type,time}=req.body;
-  console.log(username,type,time)
+
   if(!username||!type||!time){
      res.status(400).json({msg:"Bad request"})
   }
@@ -52,10 +52,10 @@ const updateRoutine = async (req,res) => {
  }
 
  const deleteRoutine = async (req, res) => {
-  const { username, routine } = req.body;
-
+  const { username, type } = req.body;
+  console.log(username,type)
   try {
-    const result = await routines.deleteOne({ username, routine });
+    const result = await routines.deleteOne({ username, routine:type });
 
     if (result.deletedCount === 0) {
       return res.status(400).json({ msg: "Check your username and routine" });
@@ -69,12 +69,13 @@ const updateRoutine = async (req,res) => {
 
 const getroutine= async(req,res)=>{
   const {username}=req.params;
+  
   if(!username){
     return res.status(400).json({msg:"Bad request"})
  }
 try{
     const data= await routines.find({username})
-    return res.status(200).json({msg:"data sent success",routines:data})
+    return res.status(200).send(data)
 }catch(err){
     res.status(500).json({msg:"Internal server error",
         error:err.message

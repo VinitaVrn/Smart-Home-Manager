@@ -157,23 +157,24 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
       const username = localStorage.getItem("username");
-
+   
       async function loadRoutines() {
+        console.log(username)
         try {
           const response = await axios.get(`http://localhost:4000/routine/get/${username}`);
           const routines = response.data;
           const routineList = document.getElementById("routines-list");
           routineList.innerHTML = "";
-
+          
           routines.forEach((routine) => {
             const newCard = document.createElement("div");
             newCard.classList.add("card");
             newCard.innerHTML = `
               <div class="card-body">
-                <p>${routine.type} at ${routine.time}</p>
+                <p>${routine.routine} at ${routine.time}</p>
                 <div>
                   <button class="btn btn-custom" onclick="editRoutine(${routine.id})">Edit</button>
-                  <button class="btn btn-custom" onclick="deleteRoutine('${routine.type}')">Delete</button>
+                  <button class="btn btn-custom" onclick="deleteRoutine('${routine.routine}')">Delete</button>
                 </div>
               </div>
             `;
