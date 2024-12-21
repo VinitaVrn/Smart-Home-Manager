@@ -7,6 +7,7 @@ import argon2 from "argon2";
 const secretkey="ggvghvgfvfhcvfg";
 const register=async (req, res)=>{
     const {Name,Username,Email,Password}=req.body;
+    console.log(Username)
     if(!Username||!Password||!Name||!Email){
         return res.status(400).json({msg:"Bad request"})
     }

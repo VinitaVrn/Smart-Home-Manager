@@ -1,9 +1,11 @@
 import { user } from "../models/user.model.js"; 
 import jwt from "jsonwebtoken";
 
-const secretkey=process.env.JWT_KEY;
+// const secretkey=process.env.JWT_KEY;
 export const validatedata=async (req,res,next)=>{
+    
     const {username,newRoom}=req.body;
+    console.log(username,newRoom)
     
     if(!username||!newRoom){
         return res.status(400).json({msg:"Bad request"})

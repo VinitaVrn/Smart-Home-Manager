@@ -1,7 +1,7 @@
 import { user,roomNdevice } from "../models/user.model.js";
 const createroomNdevice= async (req,res)=>{
 
-    const devices=req.body.devices
+    const devices=req.body.Devices
     const username=res.locals.username;
     const roomname=res.locals.roomname;
     try{
