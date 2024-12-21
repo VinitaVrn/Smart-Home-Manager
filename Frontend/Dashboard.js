@@ -1,3 +1,13 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const username = localStorage.getItem("username");
+    
+    if (username) {
+        document.getElementById("welcome").textContent = `Welcome, ${username}!`;
+    } else {
+        document.getElementById("welcome").textContent = "Welcome, Guest!";
+    }
+});
+
 function updateEnergyUsage() {
     const randomEnergyUsed = (Math.random() * 10 + 5).toFixed(1); 
     const randomEnergySaved = (Math.random() * 3 + 1).toFixed(1); 
