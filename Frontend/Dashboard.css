@@ -1,114 +1,83 @@
+
 body {
     font-family: 'Open Sans', sans-serif;
-    background: linear-gradient(135deg, #ff6600, #000000); /* Gradient from orange to black */
-    background-size: 400% 400%; /* Expand the gradient for animation */
-    animation: gradientShift 10s ease infinite; /* Animated gradient shift */
+    background: linear-gradient(to right, #FF7F50, #87CEFA);
     margin: 0;
     padding: 0;
-    color: #f0f0f0;
-    position: relative;
+    color: #fff;
+    opacity: 0.95;
 }
-
-/* Dynamic Gradient Animation */
-@keyframes gradientShift {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-/* Light spread at the bottom right corner */
-body::after {
-    content: '';
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    width: 100px;
-    height: 100px;
-    background: rgba(255, 255, 255, 0.2); /* Light spread effect */
-    border-radius: 50%;
-    box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.2); /* Glowing effect */
-    animation: lightSpread 5s infinite alternate; /* Animation for dynamic light spread */
-}
-
-/* Light spread animation */
-@keyframes lightSpread {
-    0% {
-        transform: scale(1);
-        opacity: 0.5;
-    }
-    100% {
-        transform: scale(1.5);
-        opacity: 0.8;
-    }
-}
-
 
 header {
-    background: linear-gradient(90deg, #d31f26, #ff6f61);
+    background: linear-gradient(to left, #B22222, #1E90FF);
     color: #fff;
     padding: 1rem 0;
     text-align: center;
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-family: 'Poppins', sans-serif;
     text-transform: uppercase;
+    text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+    margin-bottom: 0px;
 }
 
 .navbar {
-    background: #2a2929;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    padding: 15px 0;
+    margin-bottom: 20px;
 }
 
 .navbar a {
     text-decoration: none;
-    color: #fffefe;
-    font-size: large;
-    font-weight: 600;
-    margin: 0 15px;
+    color: #FFD700;
+    font-weight: bold;
+    margin: 0 20px;
     text-transform: uppercase;
-    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1rem;
+    padding: 10px 15px;
+    transition: color 0.3s, border-bottom 0.3s;
 }
 
 .navbar a:hover {
-    color: #ff6f61;
-    border-bottom: 2px solid #ff6f61;
+    color: #fff;
+    border-bottom: 2px solid #fff;
 }
 
 .hero {
     background: url('https://cdn.pixabay.com/photo/2019/03/22/07/31/smart-home-4072061_1280.jpg') no-repeat center center / cover;
-    height: 200px;
+    height: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #fff;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    margin-bottom: 20px;
 }
 
 .hero h1 {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     font-family: 'Poppins', sans-serif;
+    text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);
 }
 
 .container {
-    margin: 20px auto;
+    margin: 30px auto;
     max-width: 1200px;
+    padding: 0 20px;
 }
 
 .section-title {
-    font-size: 1.8rem;
-    color: #ff6f61;
+    font-size: 2rem;
+    color: #fff;
     text-align: center;
     margin-bottom: 30px;
     text-transform: uppercase;
-    font-family: 'Poppins', sans-serif;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
 }
 
 .grid {
@@ -118,152 +87,145 @@ header {
 }
 
 .card {
-    position: relative;
-    background: #181a1b;
-    border: none;
-    border-radius: 10px;
-    overflow: hidden;
+    background: rgba(51, 51, 51, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
     transition: transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    color: #fff;
+    overflow: hidden;
 }
 
 .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.card i {
+    font-size: 4rem;
+    color: #FFD700;
+    margin-bottom: 15px;
 }
 
 .card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    opacity: 0.9;
 }
 
 .card-body {
     padding: 20px;
     text-align: center;
-}
-
-.card-title {
-    font-size: 1.4rem;
-    color: #fff;
-    margin-bottom: 10px;
-    font-family: 'Poppins', sans-serif;
+    color: #DCDCDC;
 }
 
 .btn-custom {
-    background: #d31f26;
+    background: linear-gradient(to right, #B22222, #1E90FF);
     color: #fff;
     border-radius: 20px;
-    padding: 10px 20px;
+    padding: 12px 30px;
     border: none;
-    font-weight: 600;
-    font-family: 'Open Sans', sans-serif;
-    transition: background 0.3s, transform 0.3s;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    display: inline-block;
+    margin-top: 20px;
 }
 
 .btn-custom:hover {
-    background: #ff6f61;
-    transform: scale(1.1);
+    background: linear-gradient(to right, #FF6347, #4682B4);
+    transform: scale(1.05);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
 }
 
 footer {
-    background: #333;
-    color: #fff;
+    background: #000080;
+    color: #FAFAD2;
     text-align: center;
-    padding: 10px 0;
-    margin-top: 30px;
-    font-size: 9px;
-    font-family: 'Open Sans', sans-serif;
-    margin-top:150px;
- display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    font-size: 1rem;
 }
 
-
-#alert-box {
-    position: fixed;
-    top: 10px;
-    right: -400px;
-    width: 300px;
-    background-color: #f44336;
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: right 0.5s ease-in-out;
-    z-index: 9999;
+footer a {
+    color: #FAFAD2;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-
-#alert-box.show {
-    right: 20px;
-}
-
-
-.energy-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #222;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.energy-card h5 {
-    color: #ff6f61;
-    font-size: 1.6rem;
-    font-family: 'Poppins', sans-serif;
-}
-
-.energy-card p {
-    color: #f0f0f0;
-    margin: 5px 0;
-}
-
-.energy-card .energy-details {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-/* Styles for the alert box */
-#alert-box {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translate(-50%);
-    background-color: rgb(56, 49, 47);
-    /* padding: 20px; */
-    border-radius: 10px;
-    display: none;
-    opacity: 0;
-    transition: all 0.5s ease;
-    height: 200px;
-    z-index: 9999;
-}
-
-/* Show the alert box with a sliding effect */
-#alert-box.show {
-    display: block;
-    opacity: 1;
-    transform: translateX(60%) translateY(0);
-}
-
-#alert-box.hide {
-    transform: translateX(1700%) translateY(0);
-}
-#alert-box button {
-    background-color: #e83424;
+footer a:hover {
     color: #fff;
-     margin: 90px;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 600;
-    transition: background 0.3s;
 }
+
+.alerts {
+    margin-top: 50px;
+}
+
+@media (max-width: 1200px) {
+    .navbar a {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        font-size: 2rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card i {
+        font-size: 3rem;
+    }
+
+    .btn-custom {
+        font-size: 0.9rem;
+        padding: 10px 25px;
+    }
+
+    footer {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        font-size: 1.5rem;
+    }
+
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 1.2rem;
+    }
+
+    .navbar {
+        flex-direction: column;
+    }
+
+    .navbar a {
+        font-size: 1rem;
+        margin: 5px 0;
+    }
+
+    .btn-custom {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+
+    footer {
+        font-size: 0.8rem;
+    }
+}
+
