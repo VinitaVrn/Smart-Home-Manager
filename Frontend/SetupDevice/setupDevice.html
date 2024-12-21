@@ -10,9 +10,8 @@
     <nav class="navbar">
       <div class="logo">
         <img
-          src="transparent_vsmart.png"
-          width="110"
-          height="80"
+          src="clear-backgroundLogo.png"
+          width="150"
           alt="Smart Home Logo"
         />
       </div>
@@ -20,7 +19,7 @@
       <a href="../addRoutine.html">Routines</a>
       <a href="setupDevice.html">Manage Devices</a>
       <a href="../EnergyUsage.html">Energy Usage</a>
-      <a href="../alerts.html">Alerts</a>
+      <a href="alerts.html">Alerts</a>
     </nav>
 
     <main>
@@ -46,7 +45,7 @@
               <div id="forminput">
                 <div class="rooms">
                   <!-- part your house -->
-                  <label for="homePart">Select Part of Home:</label>
+                  <label for="homePart" >Select Part of Home:</label>
                   <select name="homePart" id="homePart" required>
                     <option value="">Select The Part</option>
                     <option value="LivingRoom">Living Room</option>
@@ -113,7 +112,7 @@
                 </div>
 
                 <div id="buttonsub" class="rooms">
-                  <button type="submit" id="submitbutton">Add ROOm</button>
+                  <button type="submit" id="submitbutton">Add Room</button>
                   <button  id="dashboardPage" onclick="Dashboard()">Skip</button>
                 </div>
               </div>
@@ -122,6 +121,7 @@
         </div>
       </div>
     </main>
+    <footer>© Powered by CodeSmiths</footer>
   </body>
 </html>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

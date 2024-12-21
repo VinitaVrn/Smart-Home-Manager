@@ -263,3 +263,90 @@ footer a:hover {
   
 
 
+/* General container for dynamic data */
+.createRoom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Card body style */
+.room .card-body {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.room .card-body:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Title styling */
+.card-title {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Status text styling */
+.card-body #tv-status {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Toggle switch container */
+.card-body .form-check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* Toggle switch style */
+.card-body .form-check-input {
+    width: 40px;
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    appearance: none;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.card-body .form-check-input:checked {
+    background-color: #28a745;
+}
+
+.card-body .form-check-input::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.card-body .form-check-input:checked::before {
+    transform: translateX(20px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .room .card-body {
+        width: 100%;
+    }
+}

@@ -80,7 +80,7 @@ function goToRoom(roomId) {
 
 // Function to navigate to the setup device page
 function goToSetupDevice() {
-    window.location.href = "/setup-device";
+    window.location.href = "SetupDevice/setupDevice.html";
 }
 
 // Initialize the rooms on page load
