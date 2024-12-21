@@ -8,16 +8,17 @@ document.addEventListener("DOMContentLoaded" , function(){
         const username = document.getElementById('username').value
         const password = document.getElementById('password').value
 
-        const userData = { Name: name, Email: email,Username: username,Password: password}
+        const userData = { "Name": name, "Email": email,"Username": username,"Password": password}
         registerUser(userData)
     })
 })
 
 async function registerUser(userData) {
     try {
-        const response = await axios.post("http://localhost:4000/user/signup", userData);
-        console.log(response.data);
-        
+
+        const response = await axios.post("https://v-smartz-default-rtdb.firebaseio.com/Users.json", userData);
+        console.log("Response data:", response.data)
+
         // Save username to localStorage
         localStorage.setItem('username', userData.Username);
         
