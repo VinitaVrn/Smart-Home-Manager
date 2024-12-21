@@ -59,13 +59,13 @@ const updateDevive = async (req,res) => {
 }
 
 const getroom= async (req,res)=>{
-    const {username}=req.body;
+    const {username}=req.params;
     if(!username){
         return res.status(400).json({msg:"Bad request"})
     }
     try{
-        const data= await roomNdevice.findOne({username})
-        return res.status(200).json({msg:"data sent success",roomdata:data})
+        const data= await roomNdevice.find({username})
+        return res.status(200).send(data)
     }catch(err){
         res.status(500).json({msg:"Internal server error",
             error:err.message

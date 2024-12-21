@@ -5,7 +5,7 @@ const roomNdeviceRouter=Router();
 
 roomNdeviceRouter.post('/update',updateDevive)
 roomNdeviceRouter.post('/updateState',updateState)
-roomNdeviceRouter.get("/send",getroom)
+roomNdeviceRouter.get("/send/:username",getroom)
 roomNdeviceRouter.use(validatedata);
 roomNdeviceRouter.post("/create",createroomNdevice)
 // roomNdeviceRouter.update("/update")
