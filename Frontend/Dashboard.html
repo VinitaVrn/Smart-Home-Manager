@@ -11,11 +11,13 @@
 <body>
     <nav class="navbar">
         <div class="logo">
-            <img src="./transparent_vsmart.png" width="100" alt="Smart Home Logo">
+            <img src="SetupDevice/transparent_vsmart.png" width="150" height="80" alt="Smart Home Logo">
+
         </div>
-        <div>    <a href="#dashboard">Dashboard</a>
+        <a href="Dashboard.html">Dashboard</a>
         <a href="addRoutine.html">Routines</a>
-        <a href="#energy">Energy Usage</a>
+        <a href="SetupDevice/setupDevice.html">Manage Devices</a>
+        <a href="EnergyUsage.html">Energy Usage</a>
         <a href="javascript:void(0);" onclick="toggleAlert()">Alerts</a>
   </div>
       </nav>
@@ -48,6 +50,20 @@
                 </div>
             </div>
         </section>
+        <br>
+          <!-- Routines Section -->
+          <section id="routines">
+            <h2 class="section-title">Routines</h2>
+            <div class="card">
+                <div class="card-body">
+                    <p>Turn off all devices at 11 PM</p>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <button class="btn btn-custom mt-3" type="button" onclick="location.href='addRoutine.html'">Manage Routines</button>
+            </div>
+        </section>
+        <br>
 
         <!-- Energy Usage Section -->
         <section id="energy">
@@ -72,14 +88,14 @@
     </div>
 
     <footer>
-        <p>&copy; 2024 Smart Home Management</p>
+        © Powered by CodeSmiths
     </footer>
 
-    <!-- Alert Box (hidden initially) -->
+    <!-- Alert Box (hidden initially)
     <div id="alert-box" class="hide">
         This is an alert message.
         <button onclick="closeAlert()">Close</button>
-    </div>
+    </div> -->
 </body>
 </html>
 <script src="./Dashboard.js"></script>

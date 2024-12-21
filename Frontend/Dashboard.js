@@ -18,13 +18,17 @@ function updateEnergyUsage() {
 setInterval(updateEnergyUsage, 10000);
 
 function toggleAlert() {
-    document.getElementById('alert-box').classList.toggle('show');
+   alert("Alert: Device is using more energy than usual");
+    //document.getElementById('alert-box').classList.toggle('show');
 }
 
-function closeAlert() {
-    document.getElementById('alert-box').classList.remove('show');
-}
+// function closeAlert() {
+//     document.getElementById('alert-box').classList.remove('show');
+// }
 
+// function dashboard(){
+//     window.location.href = "../Dashboard.html";
+// }
 updateEnergyUsage();
 
 function toggleDevice(statusId, checkbox) {
