@@ -25,7 +25,7 @@ async function addRoom(e) {
   const newRoom = roomName === "custom" ? customRoom : roomName;
 
   const devices = [];
-  if (device1) if (device1) devices.push({devicename:device1});
+  if (device1)  devices.push({devicename:device1});
   if (device2)  devices.push({devicename:device2});
   if (device3)  devices.push({devicename:device3});
   if (device4)  devices.push({devicename:device4});
