@@ -1,8 +1,9 @@
 async function YourRoom() {
     const createRoom = document.getElementById("createRoom");
-    
+    const username = localStorage.getItem("username");
+
     try {
-        const response = await axios.get("Api link need ");
+        const response = await axios.post("http://localhost:4000/roomNdevice/getroom");
         const rooms = response.data;
         
         createRoom.innerHTML = rooms.map((elem) => {
