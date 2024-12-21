@@ -24,13 +24,13 @@ async function addRoom(e) {
 
   const newRoom = roomName === "custom" ? customRoom : roomName;
 
-  const devices = {};
-  if (device1) devices.Lamps = device1;
-  if (device2) devices.TV = device2;
-  if (device3) devices.Fan = device3;
-  if (device4) devices.Light = device4;
-  if (device5) devices.RGBLight = device5;
-  if (device6) devices.SwitchBoard = device6;
+  const devices = [];
+  if (device1)  devices.push({devicename:device1});
+  if (device2)  devices.push({devicename:device2});
+  if (device3)  devices.push({devicename:device3});
+  if (device4)  devices.push({devicename:device4});
+  if (device5)  devices.push({devicename:device5});
+  if (device6)  devices.push({devicename:device6});
 
   const username = localStorage.getItem("username");
 
