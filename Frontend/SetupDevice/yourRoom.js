@@ -1,13 +1,7 @@
-//username match with the username in the database
-//render devices name, state, and room name,
-// Room name is a button that will take you to the room page
-//state is a toggle button that will turn on or off the device 
-//add a button to redirect to  setup device page
-
 async function YourRoom() {
     const createRoom = document.getElementById("createRoom");
     const username = localStorage.getItem("username");
-  console.log("Username retrieved from localStorage:", username);
+    console.log("Username retrieved from localStorage:", username);
 
     if (!username) {
         createRoom.innerHTML = "<p>Please log in to view your rooms.</p>";
@@ -15,53 +9,79 @@ async function YourRoom() {
     }
 
     try {
-       
         const response = await axios.get(`http://localhost:4000/roomNdevice/send/${username}`);
         const rooms = response.data;
-       console.log("Rooms fetched:", rooms);
+        console.log("Rooms fetched:", rooms);
 
-      
-    //     const userRooms = rooms.filter(room => room.username === username);
+        if (rooms.length === 0) {
+            createRoom.innerHTML = "<p>No rooms found for this user.</p>";
+            return;
+        }
 
-    //    console.log(userRooms)
-    //     if (userRooms.length === 0) {
-    //         createRoom.innerHTML = "<p>No rooms found for this user.</p>";
-    //         return;
-    //     }
-     
-        rooms.innerHTML = userRooms.map(room => `
-            <div key="${room.id}" >
-                <h4>${room.name}</h4>
-                <div>
-                    ${room.devices.map(device => `
-                        <div >
-                            <span>${device.name}</span>
-                            <button 
-                                onclick="toggleDeviceState('${device.id}', ${device.state})" 
-                                class="btn ${device.state ? 'btn-success' : 'btn-secondary'}">
-                                ${device.state ? 'Turn Off' : 'Turn On'}
-                            </button>
-                        </div>
-                    `).join('')}
+        // Generate HTML content for rooms and devices
+        createRoom.innerHTML = rooms
+            .map((room) => `
+                <div class="room" key="${room._id}">
+                    <h4>
+                        <button 
+                            class="btn btn-primary room-button"
+                            onclick="goToRoom('${room._id}')">
+                            ${room.roomname}
+                        </button>
+                    </h4>
+                    <div class="devices">
+                        ${room.device
+                            .map((device) => `
+                                <div class="device">
+                                    <span>${device.devicename}</span>
+                                    <button 
+                                        onclick="toggleDeviceState('${device._id}', ${device.state})" 
+                                        class="btn ${device.state ? 'btn-success' : 'btn-secondary'}">
+                                        ${device.state ? 'Turn Off' : 'Turn On'}
+                                    </button>
+                                </div>
+                            `)
+                            .join("")}
+                    </div>
                 </div>
-            </div>
-        `).join('');
+            `)
+            .join("");
+
+        // Add a button to navigate to the setup device page
+        createRoom.innerHTML += `
+            <button 
+                class="btn btn-success setup-device-button"
+                onclick="goToSetupDevice()">
+                Setup New Device
+            </button>
+        `;
     } catch (error) {
-        // console.error("Error fetching rooms:");
+        console.error("Error fetching rooms:", error.response?.data || error.message);
         createRoom.innerHTML = "<p>Failed to load rooms. Please try again later.</p>";
     }
 }
 
-// async function toggleDeviceState(deviceId, currentState) {
-//     try {
-//         const newState = !currentState; // Toggle the state
-//         await axios.patch(`http://localhost:4000/device/toggle/${deviceId}`, { state: newState });
-//         YourRoom(); // Refresh the rooms and devices
-//     } catch (error) {
-//         console.error("Error toggling device state:", error.response?.data || error.message);
-//         alert("Failed to toggle device state. Please try again.");
-//     }
-// }
+// Function to toggle the state of a device
+async function toggleDeviceState(deviceId, currentState) {
+    try {
+        const newState = !currentState; // Toggle the state
+        await axios.patch(`http://localhost:4000/device/toggle/${deviceId}`, { state: newState });
+        YourRoom(); // Refresh the rooms and devices
+    } catch (error) {
+        console.error("Error toggling device state:", error.response?.data || error.message);
+        alert("Failed to toggle device state. Please try again.");
+    }
+}
+
+// Function to navigate to a specific room
+function goToRoom(roomId) {
+    window.location.href = `/room/${roomId}`;
+}
+
+// Function to navigate to the setup device page
+function goToSetupDevice() {
+    window.location.href = "/setup-device";
+}
 
 // Initialize the rooms on page load
 YourRoom();
