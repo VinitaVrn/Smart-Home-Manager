@@ -36,10 +36,7 @@ function toggleDevice(statusId, checkbox) {
     statusElement.textContent = checkbox.checked ? 'Status: On' : 'Status: Off';
 }
 
-function updateThermostat(statusId, value) {
-    const statusElement = document.getElementById(statusId);
-    statusElement.textContent = `Temperature: ${value}°C`;
-}
+
 function toggleAlert() {
     const alertBox = document.getElementById('alert-box');
     alertBox.classList.toggle('show');
@@ -52,4 +49,14 @@ function closeAlert() {
     setTimeout(() => {
         alertBox.classList.remove('show', 'hide');
     }, 500); // Match the transition time to hide it after animation
+}
+
+
+
+//                       ////////////
+function updateThermostat() {
+    const slider = document.getElementById('thermostat-range');
+    const statusElement = document.getElementById('thermostat-status');
+    const value = slider.value;
+    statusElement.textContent = `Temperature: ${value}°C`;
 }
