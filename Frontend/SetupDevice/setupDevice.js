@@ -46,7 +46,7 @@ console.log(newRoom);
 
     try {
         // Save room data under the user's username in Firebase
-        const res = await axios.post("https://smart-home-manager-backend.onrender.com/roomNdevice/create",
+        const res = await axios.post("http://localhost:4000/roomNdevice/create",
             roomData
         );
         console.log("Response data:", res.data);

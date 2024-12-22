@@ -9,7 +9,7 @@ async function YourRoom() {
     }
 
     try {
-        const response = await axios.get(`https://smart-home-manager-backend.onrender.com/roomNdevice/send/${username}`);
+        const response = await axios.get(`http://localhost:4000/roomNdevice/send/${username}`);
         const rooms = response.data;
         console.log("Rooms fetched:", rooms);
 

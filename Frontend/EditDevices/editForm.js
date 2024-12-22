@@ -15,7 +15,7 @@ async function RemoveRooms() {
     if (!confirmation) return; 
 
     try {
-        const response = await axios.delete(`https://smart-home-manager-backend.onrender.com/roomNdevice/delete`);      // Delete room API link
+        const response = await axios.delete(`http://localhost:4000/roomNdevice/delete`);      // Delete room API link
         if (response.status === 200) {
             DashBoard(); 
         } else {
