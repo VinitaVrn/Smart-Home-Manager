@@ -529,4 +529,7 @@ body {
   cursor: pointer;
   border-radius: 3px;
 }
-
+.room{
+  display: flex;
+  border: 2px solid black;
+}

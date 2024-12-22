@@ -33,8 +33,8 @@ async function YourRoom() {
                     <div class="devices">
                         ${room.device
                             .map((device) => `
-                           <div class="card">  <div class="card-body">
-                                <div class="device">
+                           
+                                <div class="device" class="card-body">
                                     <span>${device.devicename}</span>
                                     <button 
                                         onclick="toggleDeviceState('${device._id}', ${device.state})" 
@@ -45,7 +45,7 @@ async function YourRoom() {
                                   <div class="View">
                                 <button class="ViewDevice" onclick="EditForm()">View</button>
                             </div>
-                                </div></div>
+                                
                             `)
                             .join("")}
                     </div>
@@ -56,7 +56,7 @@ async function YourRoom() {
      
     } catch (error) {
         console.error("Error fetching rooms:", error.response?.data || error.message);
-        createRoom.innerHTML = ` <div class="card"><div class="card-body"><p>Failed to load rooms. Please try again later.</p></div></div>`
+        createRoom.innerHTML = ` <div class="card-body"><p>Failed to load rooms. Please try again later.</p></div>`
     }
 }
 
