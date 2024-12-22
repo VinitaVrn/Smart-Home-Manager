@@ -64,5 +64,5 @@ async function fetchData(loginData) {
 }
 
 function toggleForms() {
-    window.location.href = 'Signup.html';
+    window.location.href = 'index.html';
 }
