@@ -17,11 +17,14 @@
               alt="Smart Home Logo"
             />
           </div>
-        <a href="Dashboard.html">Dashboard</a>
-        <a href="addRoutine.html">Routines</a>
-        <a href="./EditDevices/editForm.html">Manage Devices</a>
-        <a href="EnergyUsage.html">Energy Usage</a>
-        <a href="javascript:void(0);" onclick="toggleAlert()">Alerts</a>
+          <!-- .................. -->
+          <a href="Dashboard.html">Dashboard</a>
+          <a href="addRoutine.html">Routines</a>
+          <a href="./SetupDevice/setupDevice.html">Setup New Device</a>
+          <a href="EnergyUsage.html">Energy Usage</a>
+          <a href="javascript:void(0);" onclick="toggleAlert()">Alerts</a> 
+          
+         
   </div>
       </nav>
 
@@ -35,8 +38,9 @@
             <h2 class="section-title">Dashboard</h2>
             <div class="grid">
                
-                 <div id="createRoom"></div> 
-                 <div class="card">
+                 <div class="card" id="createRoom"></div> 
+
+                 <!-- <div class="card">
                     <div class="card-body">
                         <button 
                                 class="btn btn-success setup-device-button"
@@ -44,9 +48,11 @@
                          Setup New Device
                     </button>
                     </div>
-                </div>
+                </div> -->
+
+
                  <!-- Add Room Button -->
-                <div class="card">
+                <!-- <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">TV</h5>
                         <p id="tv-status">Status: Off</p>
@@ -57,7 +63,7 @@
                             <button class="ViewDevice" onclick="EditForm()">View</button>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- update from ..... -->
                 <div class="card">
@@ -65,9 +71,7 @@
                             <h5 class="card-title">Thermostat</h5>
                             <p id="thermostat-status">Temperature: 22°C</p>
                             <input type="range" min="10" max="30" value="22" class="slider" id="thermostat-range" onchange="updateThermostat()">
-                            <div class="View">
-                                <button class="ViewDevice" onclick="EditForm()">View</button>
-                            </div>
+                           
                             
                         </div>
                     </div>

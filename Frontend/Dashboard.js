@@ -66,7 +66,3 @@ function closeAlert() {
         alertBox.style.display = 'none';
     }, 500);
 }
-
-
-
-
