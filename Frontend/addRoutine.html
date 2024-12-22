@@ -209,23 +209,26 @@
       }
 
       async function editRoutine(lastroutine) {
-        const routine = prompt("Edit the routine type and time (format: Type at Time):");
-        if (routine) {
-          const [type, time] = routine.split(" at ");
-          if (type && time) {
+        const routineType = prompt("Enter the new type of routine (e.g., Lights, Coffee Machine):");
+        const routineTime = prompt("Enter the new time for the routine (e.g., 10 PM, 6 AM):");
+
+        if (routineType && routineTime) {
             try {
-              await axios.put(`http://localhost:4000/routine/update`, {username,lastroutine, type, time });
-              alert("Routine updated successfully!");
-              await loadRoutines();
+                const updatedRoutine = { username, lastroutine, type: routineType, time: routineTime };
+                const response = await axios.put("http://localhost:4000/routine/update", updatedRoutine);
+
+                if (response.status === 200) {
+                    alert("Routine updated successfully!");
+                    await loadRoutines();
+                } else {
+                    console.error("Error updating routine:", response.statusText);
+                }
             } catch (error) {
-              console.error("Error updating routine:", error);
-              alert("Failed to update routine. Please try again.");
+                console.error("Error updating routine:", error);
+                alert("Failed to update routine. Please try again.");
             }
-          } else {
-            alert("Invalid format. Please provide in 'Type at Time'.");
-          }
         }
-      }
+    }
 
       async function deleteRoutine(routineType) {
         if (confirm("Are you sure you want to delete this routine?")) {
