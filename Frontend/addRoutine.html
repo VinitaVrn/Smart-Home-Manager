@@ -159,7 +159,7 @@
       const username = localStorage.getItem("username");
    
       async function loadRoutines() {
-        console.log(username)
+        
         try {
           const response = await axios.get(`http://localhost:4000/routine/get/${username}`);
           const routines = response.data;
@@ -173,7 +173,7 @@
               <div class="card-body">
                 <p>${routine.routine} at ${routine.time}</p>
                 <div>
-                  <button class="btn btn-custom" onclick="editRoutine(${routine.routine})">Edit</button>
+                  <button class="btn btn-custom" onclick="editRoutine('${routine.routine}')">Edit</button>
                   <button class="btn btn-custom" onclick="deleteRoutine('${routine.routine}')">Delete</button>
                 </div>
               </div>
@@ -209,13 +209,14 @@
       }
 
       async function editRoutine(lastroutine) {
+        console.log(lastroutine)
         const routineType = prompt("Enter the new type of routine (e.g., Lights, Coffee Machine):");
         const routineTime = prompt("Enter the new time for the routine (e.g., 10 PM, 6 AM):");
 
         if (routineType && routineTime) {
             try {
                 const updatedRoutine = { username, lastroutine, type: routineType, time: routineTime };
-                const response = await axios.put("http://localhost:4000/routine/update", updatedRoutine);
+                const response = await axios.post("http://localhost:4000/routine/update", updatedRoutine);
 
                 if (response.status === 200) {
                     alert("Routine updated successfully!");
