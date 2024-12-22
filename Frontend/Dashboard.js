@@ -8,60 +8,32 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-function updateEnergyUsage() {
-    const randomEnergyUsed = (Math.random() * 10 + 5).toFixed(1); 
-    const randomEnergySaved = (Math.random() * 3 + 1).toFixed(1); 
 
-    document.getElementById('heater-energy').textContent = randomEnergyUsed;
-    document.getElementById('heater-savings').textContent = randomEnergySaved;
-    document.getElementById('heater-time').textContent = `${Math.floor(Math.random() * 5)} hours ago`;
 
-    document.getElementById('ac-energy').textContent = randomEnergyUsed;
-    document.getElementById('ac-savings').textContent = randomEnergySaved;
-    document.getElementById('ac-time').textContent = `${Math.floor(Math.random() * 5)} hours ago`;
+// updateEnergyUsage
 
-    document.getElementById('lights-energy').textContent = randomEnergyUsed;
-    document.getElementById('lights-savings').textContent = randomEnergySaved;
-    document.getElementById('lights-time').textContent = `${Math.floor(Math.random() * 5)} minutes ago`;
-}
 
-setInterval(updateEnergyUsage, 10000);
+const energyElement = document.getElementById('energyValues');
+let currentValue = 0.0;
 
-function toggleAlert() {
-   alert("Alert: Device is using more energy than usual");
-    //document.getElementById('alert-box').classList.toggle('show');
-}
 
-// function closeAlert() {
-//     document.getElementById('alert-box').classList.remove('show');
-// }
-
-// function dashboard(){
-//     window.location.href = "../Dashboard.html";
-// }
-updateEnergyUsage();
-
-function toggleDevice(statusId, checkbox) {
-    const statusElement = document.getElementById(statusId);
-    statusElement.textContent = checkbox.checked ? 'Status: On' : 'Status: Off';
+function updateEnergyValue() {
+    currentValue += Math.random() * 0.5; 
+    energyElement.textContent = `${currentValue.toFixed(2)} kWh`;
 }
 
 
-function toggleAlert() {
-    const alertBox = document.getElementById('alert-box');
-    alertBox.classList.toggle('show');
-    alertBox.classList.remove('hide');
-}
-
-function closeAlert() {
-    const alertBox = document.getElementById('alert-box');
-    alertBox.classList.add('hide');
-    setTimeout(() => {
-        alertBox.classList.remove('show', 'hide');
-    }, 500); // Match the transition time to hide it after animation
+setInterval(updateEnergyValue, 1000);
+    //   /////
+const energy = document.getElementById("ene")
+let curr = 50
+function updateValue() {
+    curr += Math.random() * 0.5; 
+    ene.textContent = `${curr.toFixed(2)} kWh`;
 }
 
 
+setInterval(updateValue, 1000);
 
 //                       ////////////
 function updateThermostat() {
@@ -70,3 +42,31 @@ function updateThermostat() {
     const value = slider.value;
     statusElement.textContent = `Temperature: ${value}°C`;
 }
+
+
+// alert
+function toggleAlert() {
+    const message = "Alert: Device is using more energy than usual";
+    document.getElementById('alert-message').textContent = message;
+    
+    let alertBox = document.getElementById('alert-box');
+    
+    if (!alertBox.classList.contains('show')) {
+        alertBox.style.display = 'block';
+        alertBox.classList.add('show');
+    }
+    
+ 
+}
+
+function closeAlert() {
+    let alertBox = document.getElementById('alert-box');
+    alertBox.classList.remove('show');
+    setTimeout(function() {
+        alertBox.style.display = 'none';
+    }, 500);
+}
+
+
+
+

@@ -12,14 +12,14 @@
     <nav class="navbar">
         <div class="logo">
             <img
-              src="./SetupDevice/clear-backgroundLogo.png"
+              src="./SetupDevice/transparent_vsmart.png"
               width="150"
               alt="Smart Home Logo"
             />
           </div>
         <a href="Dashboard.html">Dashboard</a>
         <a href="addRoutine.html">Routines</a>
-        <a href="SetupDevice/setupDevice.html">Manage Devices</a>
+        <a href="./EditDevices/editForm.html">Manage Devices</a>
         <a href="EnergyUsage.html">Energy Usage</a>
         <a href="javascript:void(0);" onclick="toggleAlert()">Alerts</a>
   </div>
@@ -34,13 +34,27 @@
         <section id="dashboard">
             <h2 class="section-title">Dashboard</h2>
             <div class="grid">
-                 <div id="createRoom"></div>                <!-- Add Room Button -->
+               
+                 <div id="createRoom"></div> 
+                 <div class="card">
+                    <div class="card-body">
+                        <button 
+                                class="btn btn-success setup-device-button"
+                           onclick="goToSetupDevice()">
+                         Setup New Device
+                    </button>
+                    </div>
+                </div>
+                 <!-- Add Room Button -->
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">TV</h5>
                         <p id="tv-status">Status: Off</p>
                         <div class="form-check form-switch d-flex justify-content-center">
                             <input class="form-check-input" type="checkbox" id="tv-status-switch" onchange="toggleDevice('tv-status', this)">
+                        </div>
+                        <div class="View">
+                            <button class="ViewDevice" onclick="EditForm()">View</button>
                         </div>
                     </div>
                 </div>
@@ -51,6 +65,10 @@
                             <h5 class="card-title">Thermostat</h5>
                             <p id="thermostat-status">Temperature: 22°C</p>
                             <input type="range" min="10" max="30" value="22" class="slider" id="thermostat-range" onchange="updateThermostat()">
+                            <div class="View">
+                                <button class="ViewDevice" onclick="EditForm()">View</button>
+                            </div>
+                            
                         </div>
                     </div>
 
@@ -82,8 +100,8 @@
                 <div class="card">
                     <div class = 'card-body'>
                     <h5>Total Energy</h5>
-                    <div class="energy-details">
-                        <p>50 kWh</p>
+                    <div class="energyDetails">
+                        <p id="ene">50 kWh</p>
                         <p>Last 24 hours</p>
                     </div>
                     </div>
@@ -91,10 +109,9 @@
                 <div class="card">
                     <div class = 'card-body'>
                     <h5>Current Usage</h5>
-                    <div class="energy-details">
-                        <p>2.5 kWh</p>
-                        <p>Today </p>
-                        
+                    <div class="energyDetail">
+                        <p id="energyValues">2.5 kWh</p>
+                        <p>Today</p>
                     </div><div id="dot-green"></div>
                 </div>
                 </div>
@@ -102,18 +119,21 @@
         </section>
     </div>
 </div>
+
+    <!-- alert  -   alert       -->
+    <div class="alert">
+        <div id="alert-box" class="hide">
+          <span id="alert-message">This is an alert message!</span>
+          <button onclick="closeAlert()">Close</button>
+        </div>
+      </div>
+
+
+<!--              -->
+      
     <footer>
         © Powered by CodeSmiths
     </footer>
-
-    <!-- Alert Box (hidden initially)
-    <div id="alert-box" class="hide">
-        This is an alert message.
-        <button onclick="closeAlert()">Close</button>
-    </div> -->
-
-
-    
 
 </body>
 </html>

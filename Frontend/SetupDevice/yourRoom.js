@@ -4,7 +4,7 @@ async function YourRoom() {
     console.log("Username retrieved from localStorage:", username);
 
     if (!username) {
-        createRoom.innerHTML = "<p>Please log in to view your rooms.</p>";
+       window.location.href = './Authentication/Login.html'
         return;
     }
 
@@ -21,6 +21,7 @@ async function YourRoom() {
         // Generate HTML content for rooms and devices
         createRoom.innerHTML = rooms
             .map((room) => `
+            
                 <div class="room" key="${room._id}">
                     <h4>
                         <button 
@@ -32,6 +33,7 @@ async function YourRoom() {
                     <div class="devices">
                         ${room.device
                             .map((device) => `
+                           <div class="card">  <div class="card-body">
                                 <div class="device">
                                     <span>${device.devicename}</span>
                                     <button 
@@ -40,6 +42,10 @@ async function YourRoom() {
                                         ${device.state ? 'Turn Off' : 'Turn On'}
                                     </button>
                                 </div>
+                                  <div class="View">
+                                <button class="ViewDevice" onclick="EditForm()">View</button>
+                            </div>
+                                </div></div>
                             `)
                             .join("")}
                     </div>
@@ -47,17 +53,10 @@ async function YourRoom() {
             `)
             .join("");
 
-        // Add a button to navigate to the setup device page
-        createRoom.innerHTML += `
-            <button 
-                class="btn btn-success setup-device-button"
-                onclick="goToSetupDevice()">
-                Setup New Device
-            </button>
-        `;
+     
     } catch (error) {
         console.error("Error fetching rooms:", error.response?.data || error.message);
-        createRoom.innerHTML = "<p>Failed to load rooms. Please try again later.</p>";
+        createRoom.innerHTML = ` <div class="card"><div class="card-body"><p>Failed to load rooms. Please try again later.</p></div></div>`
     }
 }
 
@@ -85,3 +84,7 @@ function goToSetupDevice() {
 
 // Initialize the rooms on page load
 YourRoom();
+
+function EditForm(){
+    window.location.href = "./EditDevices/editForm.html"
+}

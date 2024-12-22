@@ -478,3 +478,55 @@ body {
     width: 100%;
   }
 }
+
+.View .ViewDevice {
+  background: rgba(28, 223, 38, 0.6); 
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  
+  color: #cac3c3;
+  padding: 6px 29px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+  margin-top: 15px;
+}
+
+.View .ViewDevice:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  background: rgba(17, 153, 24, 0.8);
+}
+
+
+/* alerrt */
+#alert-box {
+  position: fixed;
+    right: 20px;
+  top: 120px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: none;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+#alert-box.show {
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+#alert-box button {
+  background: red;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
