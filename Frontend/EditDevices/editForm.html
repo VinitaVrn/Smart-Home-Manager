@@ -8,15 +8,28 @@
 </head>
 <body>
     <div class="smart-home">
-        <header>
+        <!-- <header>
             <div id="logo">
                 <img src="./logo2.png" alt="V-Smartz"> 
             </div>
-        </header>
+        </header> -->
+        <nav class="navbar">
+            <div class="logo">
+                <img
+                  src="../SetupDevice/clear-backgroundLogo.png"
+                  width="150"
+                  alt="Smart Home Logo"
+                />
+              </div>
+            <a href="../Dashboard.html">Dashboard</a>
+            <a href="../SetupDevice/setupDevice.html">Routines</a>
+           
+      </div>
+          </nav>
 
         <main>
             <div id="yourRoom">
-                    <h1 id="itsMyRoom">Your Room Part</h1> 
+                    <h1 id="itsMyRoom">Wifi Status</h1> 
                     <p id="wifiStatus"></p>
             </div>
 
@@ -101,25 +114,7 @@
                     </div>
                 </form>
 <!--                                   sample              -->
-                <!-- Unknown Device -->
-                <form id="unknown">
-                    <div class="section">
-                        <div class="device">
-                            <div class="flot">
-                                <h3>Unknown Device</h3>
-                                <div>
-                                    <button class="status">Off</button>
-                                    <button onclick="deviceDelete()" class="deviceDelete">Delete</button>
-                                </div>
-                            </div>
-                            <!-- Unknown Device control -->
-                            <div class="light-control">
-                                <h3>Brightness</h3>
-                                <input type="range" min="0" max="100" value="65">
-                            </div>
-                        </div>
-                    </div>
-                </form>
+
 <!--           ........................................................          -->
                 <!-- TV -->
                 <form id="tv">
