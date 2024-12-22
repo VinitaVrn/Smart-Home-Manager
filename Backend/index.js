@@ -15,9 +15,9 @@ app.use("/user",userRouter)
 app.use("/roomNdevice",roomNdeviceRouter)
 app.use("/routine",routineRoute)
 
-const mongodb= "mongodb://127.0.0.1:27017/SHM"
+const mongodb= process.env.MONGODB_URL;
 
-app.listen(4000,async()=>{
+app.listen(process.env.PORT,async()=>{
   await mongoose.connect(mongodb);
   console.log("Database connected");
   console.log("server started at http://localhost:4000")

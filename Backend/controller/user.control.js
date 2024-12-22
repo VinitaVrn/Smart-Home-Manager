@@ -4,7 +4,7 @@ dotenv.config();
 import jwt from "jsonwebtoken"
 import argon2 from "argon2";
 
-const secretkey="ggvghvgfvfhcvfg";
+const secretkey=process.env.SECRET_KEY;
 const register=async (req, res)=>{
     const {Name,Username,Email,Password}=req.body;
     console.log(Username)
