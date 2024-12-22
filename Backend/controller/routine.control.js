@@ -28,8 +28,8 @@ const createroutine= async(req,res)=>{
 }
 
 const updateRoutine = async (req,res) => {
-  const {username,lastroutine,newroutine,time} = req.body;
-  
+  const {username,lastroutine,type,time} = req.body;
+  console.log("hi")
   if(!username||!lastroutine||!time||!newroutine){
     res.status(400).json({msg:"Bad request"})
   }
@@ -41,7 +41,7 @@ const updateRoutine = async (req,res) => {
   }
  
   data.username = username;
-  data.routine = newroutine;
+  data.routine = type;
   data.time = time;
  
   await data.save();

@@ -173,7 +173,7 @@
               <div class="card-body">
                 <p>${routine.routine} at ${routine.time}</p>
                 <div>
-                  <button class="btn btn-custom" onclick="editRoutine(${routine.id})">Edit</button>
+                  <button class="btn btn-custom" onclick="editRoutine(${routine.routine})">Edit</button>
                   <button class="btn btn-custom" onclick="deleteRoutine('${routine.routine}')">Delete</button>
                 </div>
               </div>
@@ -208,13 +208,13 @@
         }
       }
 
-      async function editRoutine(id) {
+      async function editRoutine(lastroutine) {
         const routine = prompt("Edit the routine type and time (format: Type at Time):");
         if (routine) {
           const [type, time] = routine.split(" at ");
           if (type && time) {
             try {
-              await axios.put(`http://localhost:4000/routine/update/${id}`, { type, time });
+              await axios.put(`http://localhost:4000/routine/update`, {username,lastroutine, type, time });
               alert("Routine updated successfully!");
               await loadRoutines();
             } catch (error) {

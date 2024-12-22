@@ -33,6 +33,7 @@ const register=async (req, res)=>{
 
 const login=async(req,res)=>{
     const {Username,Password}=req.body;
+    console.log(Username,Password)
     if(!Username ||!Password){
         console.log(Username,Password)
         return res.status(400).json({msg:"Bad request"})
