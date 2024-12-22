@@ -161,7 +161,7 @@
       async function loadRoutines() {
         
         try {
-          const response = await axios.get(`http://localhost:4000/routine/get/${username}`);
+          const response = await axios.get(`https://smart-home-manager-backend.onrender.com/routine/get/${username}`);
           const routines = response.data;
           const routineList = document.getElementById("routines-list");
           routineList.innerHTML = "";
@@ -193,7 +193,7 @@
         if (routineType && routineTime) {
           try {
             const newRoutine = { username, type: routineType, time: routineTime };
-            const response = await axios.post("http://localhost:4000/routine/create", newRoutine);
+            const response = await axios.post("https://smart-home-manager-backend.onrender.com/routine/create", newRoutine);
 
             if (response.status === 201 || response.status === 200) {
               alert("Routine added successfully!");
@@ -216,7 +216,7 @@
         if (routineType && routineTime) {
             try {
                 const updatedRoutine = { username, lastroutine, type: routineType, time: routineTime };
-                const response = await axios.post("http://localhost:4000/routine/update", updatedRoutine);
+                const response = await axios.post("https://smart-home-manager-backend.onrender.com/routine/update", updatedRoutine);
 
                 if (response.status === 200) {
                     alert("Routine updated successfully!");
@@ -234,7 +234,7 @@
       async function deleteRoutine(routineType) {
         if (confirm("Are you sure you want to delete this routine?")) {
           try {
-            const response = await axios.delete(`http://localhost:4000/routine/delete`, {
+            const response = await axios.delete(`https://smart-home-manager-backend.onrender.com/routine/delete`, {
               data: { username, type: routineType }
             });
             if (response.status === 200) {

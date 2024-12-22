@@ -15,7 +15,7 @@ async function RemoveRooms() {
     if (!confirmation) return; 
 
     try {
-        const response = await axios.delete('delete-room-link');      // Delete room API link
+        const response = await axios.delete(`https://smart-home-manager-backend.onrender.com/roomNdevice/delete`);      // Delete room API link
         if (response.status === 200) {
             DashBoard(); 
         } else {
@@ -56,7 +56,7 @@ setInterval(() => {
 //              // Fetch room data from API
 async function fetchRoomData() {
     try {
-        const response = await axios.get('get-room-data-link');      // Replace with actual link
+        const response = await axios.get('');      // Replace with actual link
         const devices = response.data;                              // Get devices data from API response
 
         devices.forEach((device) => {

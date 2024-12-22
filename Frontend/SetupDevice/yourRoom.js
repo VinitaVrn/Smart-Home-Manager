@@ -9,7 +9,7 @@ async function YourRoom() {
     }
 
     try {
-        const response = await axios.get(`http://localhost:4000/roomNdevice/send/${username}`);
+        const response = await axios.get(`https://smart-home-manager-backend.onrender.com/roomNdevice/send/${username}`);
         const rooms = response.data;
         console.log("Rooms fetched:", rooms);
 
@@ -64,7 +64,7 @@ async function YourRoom() {
 async function toggleDeviceState(deviceId, currentState) {
     try {
         const newState = !currentState; // Toggle the state
-        await axios.patch(`http://localhost:4000/device/toggle/${deviceId}`, { state: newState });
+        await axios.patch(`https://smart-home-manager-backend.onrender.com/roomNdevice/updateState`, { state: newState });
         YourRoom(); // Refresh the rooms and devices
     } catch (error) {
         console.error("Error toggling device state:", error.response?.data || error.message);

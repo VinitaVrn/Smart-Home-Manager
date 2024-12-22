@@ -51,7 +51,7 @@ async function fetchData(loginData) {
     console.log(loginData)
     try {
         localStorage.setItem('username', loginData.Username);
-        const response = await axios.post('http://localhost:4000/user/login', loginData);
+        const response = await axios.post('https://smart-home-manager-backend.onrender.com/user/login', loginData);
         console.log(response.data)
         // if (response.data.success) {
             window.location.href = '../Dashboard.html';  //link need
