@@ -243,5 +243,5 @@ http://localhost:4000/routine/delete
 - JWT: (Json web token) for authentication purposes, creating token
 - argon2: For Hashing the passwords
 - mongoose : for mongoDB connection, storing data
-- CORS :Cross Origin Resourse Sharing
+- CORS : Origin Resourse Sharing - For allowing other domains to access our API
 - dotenv : For storing confidential data
