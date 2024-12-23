@@ -22,7 +22,7 @@ async function registerUser(userData) {
         // Save username to localStorage
         localStorage.setItem('username', userData.Username);
         
-        window.location.href = '../SetupDevice/setupDevice.html';
+        window.location.href = '../setupDevice.html';
     } catch (error) {
         console.error("Error during registration:", error);
         // alert('Something went wrong. Please try again.');
